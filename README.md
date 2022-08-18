@@ -1,4 +1,4 @@
-# funny-cats
+# Funny Cats
 
 ## Project setup
 ```
