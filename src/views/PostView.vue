@@ -25,115 +25,12 @@
       </div>
     </div>
     <div class="border-l-4 border-indigo-500">
-      <p class="p-2">
-        Adaptability:
-        <span class="font-semibold">{{ getPostBody.adaptability }}</span>
-      </p>
-      <p class="p-2">
-        affection_level:
-        <span class="font-semibold">{{ getPostBody.affection_level }}</span>
-      </p>
-      <p class="p-2">
-        child_friendly:
-        <span class="font-semibold">{{ getPostBody.child_friendly }}</span>
-      </p>
-      <p class="p-2">
-        dog_friendly:
-        <span class="font-semibold">{{ getPostBody.dog_friendly }}</span>
-      </p>
-      <p class="p-2">
-        energy_level:
-        <span class="font-semibold">{{ getPostBody.energy_level }}</span>
-      </p>
-      <p class="p-2">
-        experimental:
-        <span class="font-semibold">{{ getPostBody.experimental }}</span>
-      </p>
-      <p class="p-2">
-        grooming:
-        <span class="font-semibold">{{ getPostBody.grooming }}</span>
-      </p>
-      <p class="p-2">
-        hairless:
-        <span class="font-semibold">{{ getPostBody.hairless }}</span>
-      </p>
-      <p class="p-2">
-        health_issues:
-        <span class="font-semibold">{{ getPostBody.health_issues }}</span>
-      </p>
-      <p class="p-2">
-        hypoallergenic:
-        <span class="font-semibold">{{ getPostBody.hypoallergenic }}</span>
-      </p>
-      <p class="p-2">
-        id:
-        <span class="font-semibold">{{ getPostBody.id }}</span>
-      </p>
-      <p class="p-2">
-        indoor:
-        <span class="font-semibold">{{ getPostBody.indoor }}</span>
-      </p>
-      <p class="p-2">
-        intelligence:
-        <span class="font-semibold">{{ getPostBody.intelligence }}</span>
-      </p>
-      <p class="p-2">
-        life_span:
-        <span class="font-semibold">{{ getPostBody.life_span }}</span>
-      </p>
-      <p class="p-2">
-        natural:
-        <span class="font-semibold">{{ getPostBody.natural }}</span>
-      </p>
-      <p class="p-2">
-        origin:
-        <span class="font-semibold">{{ getPostBody.origin }}</span>
-      </p>
-      <p class="p-2">
-        rare:
-        <span class="font-semibold">{{ getPostBody.rare }}</span>
-      </p>
-      <p class="p-2">
-        rex:
-        <span class="font-semibold">{{ getPostBody.rex }}</span>
-      </p>
-      <p class="p-2">
-        shedding_level:
-        <span class="font-semibold">{{ getPostBody.shedding_level }}</span>
-      </p>
-      <p class="p-2">
-        short_legs:
-        <span class="font-semibold">{{ getPostBody.short_legs }}</span>
-      </p>
-      <p class="p-2">
-        social_needs:
-        <span class="font-semibold">{{ getPostBody.social_needs }}</span>
-      </p>
-      <p class="p-2">
-        stranger_friendly:
-        <span class="font-semibold">{{ getPostBody.stranger_friendly }}</span>
-      </p>
-      <p class="p-2">
-        suppressed_tail:
-        <span class="font-semibold">{{ getPostBody.suppressed_tail }}</span>
-      </p>
-      <p class="p-2">
-        temperament:
-        <span class="font-semibold">{{ getPostBody.temperament }}</span>
-      </p>
-      <p class="p-2">
-        vocalisation:
-        <span class="font-semibold">{{ getPostBody.vocalisation }}</span>
-      </p>
-      <p class="p-2">
-        weight:
-        <span class="font-semibold"
-          >imperial: {{ getPostBody.weight.imperial }}</span
-        >
-        <span class="font-semibold"
-          >metric: {{ getPostBody.weight.metric }}</span
-        >
-      </p>
+      <characteristicItem
+        v-for="item in getCharacteristics"
+        :key="item.label"
+        :label="item.label"
+        :value="item.value"
+      />
     </div>
   </div>
   <div
@@ -157,13 +54,10 @@ export default {
 import { ref, watchEffect, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { usePostStore } from '@/stores/Post';
+import characteristicItem from '@/components/ui/characteristicItem';
 
 const post = ref(null);
 const error = ref(null);
-// const characteristics = ref([{
-//   name:
-//   value:
-// }]);
 
 const route = useRoute();
 const id = route.params.id;
@@ -179,5 +73,126 @@ watchEffect(() => {
 const getPostBody = computed(() => {
   const [body] = post.value.breeds.length > 0 ? post.value.breeds : [];
   return body;
+});
+
+const getCharacteristics = computed(() => {
+  return [
+    {
+      label: 'Adaptability',
+      value: getPostBody.value.adaptability,
+    },
+    {
+      label: 'Affection level',
+      value: getPostBody.value.affection_level,
+    },
+    {
+      label: 'Child friendly',
+      value: getPostBody.value.child_friendly,
+    },
+    {
+      label: 'Adaptability',
+      value: getPostBody.value.adaptability,
+    },
+    {
+      label: 'Affection level',
+      value: getPostBody.value.affection_level,
+    },
+    {
+      label: 'Child friendly',
+      value: getPostBody.value.child_friendly,
+    },
+    {
+      label: 'Dog friendly',
+      value: getPostBody.value.dog_friendly,
+    },
+    {
+      label: 'Energy level',
+      value: getPostBody.value.energy_level,
+    },
+    {
+      label: 'Experimental',
+      value: getPostBody.value.experimental,
+    },
+    {
+      label: 'Grooming',
+      value: getPostBody.value.grooming,
+    },
+    {
+      label: 'Hairless',
+      value: getPostBody.value.hairless,
+    },
+    {
+      label: 'Health issues',
+      value: getPostBody.value.health_issues,
+    },
+    {
+      label: 'Hypoallergenic',
+      value: getPostBody.value.hypoallergenic,
+    },
+    {
+      label: 'ID',
+      value: getPostBody.value.id,
+    },
+    {
+      label: 'Indoor',
+      value: getPostBody.value.indoor,
+    },
+    {
+      label: 'Intelligence',
+      value: getPostBody.value.intelligence,
+    },
+    {
+      label: 'Life span',
+      value: getPostBody.value.life_span,
+    },
+    {
+      label: 'Natural',
+      value: getPostBody.value.natural,
+    },
+    {
+      label: 'Origin',
+      value: getPostBody.value.origin,
+    },
+    {
+      label: 'Rare',
+      value: getPostBody.value.rare,
+    },
+    {
+      label: 'Rex',
+      value: getPostBody.value.rex,
+    },
+    {
+      label: 'Shedding level',
+      value: getPostBody.value.shedding_level,
+    },
+    {
+      label: 'Short_legs',
+      value: getPostBody.value.short_legs,
+    },
+    {
+      label: 'Social needs',
+      value: getPostBody.value.social_needs,
+    },
+    {
+      label: 'Stranger friendly',
+      value: getPostBody.value.stranger_friendly,
+    },
+    {
+      label: 'Suppressed tail',
+      value: getPostBody.value.suppressed_tail,
+    },
+    {
+      label: 'Temperament',
+      value: getPostBody.value.temperament,
+    },
+    {
+      label: 'Vocalisation',
+      value: getPostBody.value.vocalisation,
+    },
+    {
+      label: 'Weight',
+      value: `imperial: ${getPostBody.value.weight.imperial} | metric: ${getPostBody.value.weight.metric}`,
+    },
+  ];
 });
 </script>
