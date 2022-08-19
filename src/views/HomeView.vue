@@ -12,9 +12,10 @@
   </div>
 
   <div v-if="images" class="grid grid-cols-4 auto-rows-auto gap-2">
-    <div
+    <router-link
       v-for="(image, index) in images"
       :key="image.id"
+      :to="{ name: 'post', params: { id: image.id } }"
       :class="
         index % 3 === 2
           ? ['w-full col-span-2 row-span-2 rounded overflow-hidden']
@@ -28,7 +29,7 @@
         :height="image.height"
         class="w-full h-full object-cover"
       />
-    </div>
+    </router-link>
   </div>
   <div
     v-else-if="error"

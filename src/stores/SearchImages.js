@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useFetch } from '@/composables/fetch';
 import { getFetchUrl } from '@/utils';
 
-const params = { limit: 11 };
+const params = { has_breeds: true, limit: 11 };
 const url = getFetchUrl({ path: 'images/search', params });
 
 export const useSearchImagesStore = defineStore('searchImages', {
