@@ -11,7 +11,7 @@
         />
       </div>
       <div class="w-1/2 p-3">
-        <h1 class="mb-4 text-3xl font-bold text-cyan-400">
+        <h1 class="mb-4 text-3xl font-bold">
           {{ getPostBody.name }}
         </h1>
         <p class="mb-4">{{ getPostBody.description }}</p>
@@ -48,7 +48,7 @@ import { useRoute } from 'vue-router';
 import { usePostStore } from '@/stores/Post';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
-import CharacteristicItem from '@/components/ui/CharacteristicItem';
+import CharacteristicItem from '@/components/CharacteristicItem';
 
 const post = ref(null);
 const error = ref(null);

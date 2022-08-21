@@ -1,17 +1,9 @@
 <template>
   <div>
-    <h1 class="mb-6 text-3xl font-bold text-center text-cyan-400">
-      Funny Cats Gallery
-    </h1>
-    <button
-      @click="updateImages"
-      class="block mb-4 p-2 ml-auto text-cyan-100 bg-cyan-400 hover:bg-cyan-300 rounded"
-    >
-      Update Photos
-    </button>
+    <h1 class="mb-6 text-3xl font-bold text-center">Funny Cats Gallery</h1>
+    <BaseButton right text="Update Photos" @click="updateImages" />
   </div>
-
-  <div v-if="images" class="grid grid-cols-4 auto-rows-auto gap-2">
+  <div v-if="images" class="grid grid-cols-4 auto-rows-auto gap-2 py-5">
     <router-link
       v-for="(image, index) in images"
       :key="image.id"
@@ -46,6 +38,7 @@ import { ref, watchEffect } from 'vue';
 import { useSearchImagesStore } from '@/stores/SearchImages';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
+import BaseButton from '@/components/ui/BaseButton';
 
 const images = ref(null);
 const error = ref(null);

@@ -1,7 +1,7 @@
 <template>
-  <div class="p-5 text-2xl font-bold text-center text-cyan-300">
+  <p class="p-5 text-2xl font-bold text-center">
     Oops! Error encountered: {{ message }}
-  </div>
+  </p>
 </template>
 
 <script>

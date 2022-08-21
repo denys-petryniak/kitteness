@@ -2,10 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply bg-cyan-50;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-cyan-600;
+}
+
+p {
+  @apply text-cyan-900;
+}
+
 .router-link-active {
-  @apply text-emerald-400;
+  @apply text-cyan-700 hover:text-cyan-800;
 }
 
 .router-link-exact-active {
-  @apply text-emerald-400 font-bold;
+  @apply text-cyan-700 hover:text-cyan-800 font-bold;
 }
