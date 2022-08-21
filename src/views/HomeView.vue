@@ -31,15 +31,8 @@
       />
     </router-link>
   </div>
-  <div
-    v-else-if="error"
-    class="p-5 text-2xl font-bold text-center text-cyan-300"
-  >
-    Oops! Error encountered: {{ error.message }}
-  </div>
-  <div v-else class="p-5 text-2xl font-bold text-center text-cyan-300">
-    Loading...
-  </div>
+  <ErrorMessage v-else-if="error" :message="error.message" />
+  <Preloader v-else />
 </template>
 
 <script>
@@ -51,6 +44,8 @@ export default {
 <script setup>
 import { ref, watchEffect } from 'vue';
 import { useSearchImagesStore } from '@/stores/SearchImages';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import Preloader from '@/components/ui/Preloader';
 
 const images = ref(null);
 const error = ref(null);

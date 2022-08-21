@@ -24,24 +24,16 @@
         >
       </div>
     </div>
-    <div class="border-l-4 border-indigo-500">
-      <characteristicItem
-        v-for="item in getCharacteristics"
-        :key="item.label"
+    <template v-for="item in getCharacteristics" :key="item.label">
+      <CharacteristicItem
+        v-if="item.value"
         :label="item.label"
         :value="item.value"
       />
-    </div>
+    </template>
   </div>
-  <div
-    v-else-if="error"
-    class="p-5 text-2xl font-bold text-center text-cyan-300"
-  >
-    Oops! Error encountered: {{ error.message }}
-  </div>
-  <div v-else class="p-5 text-2xl font-bold text-center text-cyan-300">
-    Loading...
-  </div>
+  <ErrorMessage v-else-if="error" :message="error.message" />
+  <Preloader v-else />
 </template>
 
 <script>
@@ -54,7 +46,9 @@ export default {
 import { ref, watchEffect, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { usePostStore } from '@/stores/Post';
-import characteristicItem from '@/components/ui/characteristicItem';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import Preloader from '@/components/ui/Preloader';
+import CharacteristicItem from '@/components/ui/CharacteristicItem';
 
 const post = ref(null);
 const error = ref(null);
@@ -90,16 +84,8 @@ const getCharacteristics = computed(() => {
       value: getPostBody.value.child_friendly,
     },
     {
-      label: 'Adaptability',
-      value: getPostBody.value.adaptability,
-    },
-    {
-      label: 'Affection level',
-      value: getPostBody.value.affection_level,
-    },
-    {
-      label: 'Child friendly',
-      value: getPostBody.value.child_friendly,
+      label: 'Cat friendly',
+      value: getPostBody.value.cat_friendly,
     },
     {
       label: 'Dog friendly',

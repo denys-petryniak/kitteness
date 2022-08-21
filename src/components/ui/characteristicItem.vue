@@ -1,5 +1,5 @@
 <template>
-  <p class="p-2">
+  <p class="p-2 border-l-4 border-indigo-500">
     {{ label }}:
     <span class="font-semibold">{{ value }}</span>
   </p>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'characteristicItem',
+  name: 'CharacteristicItem',
 };
 </script>
 
@@ -18,7 +18,7 @@ defineProps({
     required: true,
   },
   value: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
 });
