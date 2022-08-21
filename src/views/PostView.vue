@@ -72,6 +72,22 @@ const getPostBody = computed(() => {
 const getCharacteristics = computed(() => {
   return [
     {
+      label: 'Origin',
+      value: getPostBody.value.origin,
+    },
+    {
+      label: 'Temperament',
+      value: getPostBody.value.temperament,
+    },
+    {
+      label: 'Weight',
+      value: `imperial: ${getPostBody.value.weight.imperial} | metric: ${getPostBody.value.weight.metric}`,
+    },
+    {
+      label: 'Life span',
+      value: getPostBody.value.life_span,
+    },
+    {
       label: 'Adaptability',
       value: getPostBody.value.adaptability,
     },
@@ -90,6 +106,10 @@ const getCharacteristics = computed(() => {
     {
       label: 'Dog friendly',
       value: getPostBody.value.dog_friendly,
+    },
+    {
+      label: 'Stranger friendly',
+      value: getPostBody.value.stranger_friendly,
     },
     {
       label: 'Energy level',
@@ -115,10 +135,7 @@ const getCharacteristics = computed(() => {
       label: 'Hypoallergenic',
       value: getPostBody.value.hypoallergenic,
     },
-    {
-      label: 'ID',
-      value: getPostBody.value.id,
-    },
+
     {
       label: 'Indoor',
       value: getPostBody.value.indoor,
@@ -127,18 +144,12 @@ const getCharacteristics = computed(() => {
       label: 'Intelligence',
       value: getPostBody.value.intelligence,
     },
-    {
-      label: 'Life span',
-      value: getPostBody.value.life_span,
-    },
+
     {
       label: 'Natural',
       value: getPostBody.value.natural,
     },
-    {
-      label: 'Origin',
-      value: getPostBody.value.origin,
-    },
+
     {
       label: 'Rare',
       value: getPostBody.value.rare,
@@ -160,24 +171,13 @@ const getCharacteristics = computed(() => {
       value: getPostBody.value.social_needs,
     },
     {
-      label: 'Stranger friendly',
-      value: getPostBody.value.stranger_friendly,
-    },
-    {
       label: 'Suppressed tail',
       value: getPostBody.value.suppressed_tail,
     },
-    {
-      label: 'Temperament',
-      value: getPostBody.value.temperament,
-    },
+
     {
       label: 'Vocalisation',
       value: getPostBody.value.vocalisation,
-    },
-    {
-      label: 'Weight',
-      value: `imperial: ${getPostBody.value.weight.imperial} | metric: ${getPostBody.value.weight.metric}`,
     },
   ];
 });
