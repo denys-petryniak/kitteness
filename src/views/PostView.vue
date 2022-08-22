@@ -1,36 +1,18 @@
 <template>
   <div v-if="post">
-    <div class="flex justify-between">
-      <div class="w-1/2 p-3 overflow-hidden">
-        <img
-          :src="post.url"
-          alt="Cat"
-          :width="post.width"
-          :height="post.height"
-          class="rounded"
-        />
-      </div>
-      <div class="w-1/2 p-3">
-        <h1 class="mb-4 text-3xl font-bold">
-          {{ getPostBody.name }}
-        </h1>
-        <p class="mb-4">{{ getPostBody.description }}</p>
-        <a
-          :href="getPostBody.wikipedia_url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="p-2 bg-cyan-300 hover:bg-cyan-400 text-cyan-50 rounded"
-          >Learn more</a
-        >
-      </div>
-    </div>
-    <template v-for="item in getCharacteristics" :key="item.label">
-      <CharacteristicItem
-        v-if="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-    </template>
+    <PostMain
+      :imgUrl="post.url"
+      :imgWidth="post.width"
+      :imgHeight="post.height"
+      :postTitle="getPostBody.name"
+      :postDescription="getPostBody.description"
+      :postWikipediaUrl="getPostBody.wikipedia_url"
+      class="mb-4"
+    />
+    <CharacteristicsSection
+      v-if="getCharacteristics.length"
+      :characteristics="getCharacteristics"
+    />
   </div>
   <ErrorMessage v-else-if="error" :message="error.message" />
   <Preloader v-else />
@@ -48,7 +30,8 @@ import { useRoute } from 'vue-router';
 import { usePostStore } from '@/stores/Post';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
-import CharacteristicItem from '@/components/CharacteristicItem';
+import PostMain from '@/components/post/PostMain';
+import CharacteristicsSection from '@/components/post/CharacteristicsSection';
 
 const post = ref(null);
 const error = ref(null);

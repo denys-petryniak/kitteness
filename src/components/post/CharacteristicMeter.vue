@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center p-2 border-l-4 border-indigo-500">
+  <div class="flex items-center p-2">
     <label
       :for="label"
       class="w-36 mr-2 py-1 px-2 bg-indigo-50 text-indigo-900 rounded-md"

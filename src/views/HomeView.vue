@@ -1,28 +1,9 @@
 <template>
-  <div>
-    <h1 class="mb-6 text-3xl font-bold text-center">Funny Cats Gallery</h1>
+  <div class="mb-6">
+    <h1 class="mb-5 text-3xl font-bold text-center">Funny Cats Gallery</h1>
     <BaseButton right text="Update Photos" @click="updateImages" />
   </div>
-  <div v-if="images" class="grid grid-cols-4 auto-rows-auto gap-2 py-5">
-    <router-link
-      v-for="(image, index) in images"
-      :key="image.id"
-      :to="{ name: 'post', params: { id: image.id } }"
-      :class="
-        index % 3 === 2
-          ? ['w-full col-span-2 row-span-2 rounded overflow-hidden']
-          : ['w-full rounded overflow-hidden']
-      "
-    >
-      <img
-        :src="image.url"
-        alt="Cat"
-        :width="image.width"
-        :height="image.height"
-        class="w-full h-full object-cover"
-      />
-    </router-link>
-  </div>
+  <PhotoGallery v-if="images" :images="images" />
   <ErrorMessage v-else-if="error" :message="error.message" />
   <Preloader v-else />
 </template>
@@ -39,6 +20,7 @@ import { useSearchImagesStore } from '@/stores/SearchImages';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
 import BaseButton from '@/components/ui/BaseButton';
+import PhotoGallery from '@/components/home/PhotoGallery';
 
 const images = ref(null);
 const error = ref(null);
