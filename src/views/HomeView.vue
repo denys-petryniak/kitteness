@@ -1,6 +1,8 @@
 <template>
   <div class="mb-6">
-    <h1 class="mb-5 text-3xl font-bold text-center">Funny Cats Gallery</h1>
+    <h1 class="mb-5 text-2xl md:text-3xl font-bold text-center">
+      Funny Cats Gallery
+    </h1>
     <BaseButton right text="Update Photos" @click="updateImages" />
   </div>
   <PhotoGallery v-if="images" :images="images" />

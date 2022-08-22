@@ -1,6 +1,6 @@
 <template>
   <button
-    class="block p-3 text-cyan-50 bg-cyan-400 hover:bg-cyan-500 rounded-full"
+    class="block py-2 px-3 md:py-3 md:px-4 text-cyan-50 bg-cyan-400 hover:bg-cyan-500 rounded-full"
     :class="{ 'ml-auto': right }"
   >
     {{ text }}

@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <label
       :for="label"
-      class="w-1/3 mr-3 py-1 px-2 break-all bg-indigo-50 text-indigo-900 rounded-md"
+      class="w-36 mr-3 py-1 px-2 break-all bg-indigo-50 text-indigo-900 rounded-md"
       >{{ label }}:</label
     >
     <meter
@@ -13,7 +13,7 @@
       :high="meterOptions.high"
       :optimum="meterOptions.optimum"
       :value="value"
-      class="w-2/3 h-5"
+      class="w-[calc(100%_-_9.75rem)] h-5"
     ></meter>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl px-2 border-l-4 border-indigo-500">
+  <div class="max-w-lg px-2 border-l-4 border-indigo-500">
     <template
       v-for="(characteristic, index) in characteristics"
       :key="characteristic.label"

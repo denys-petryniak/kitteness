@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 auto-rows-auto gap-2">
+  <div class="md:grid md:grid-cols-4 md:auto-rows-auto md:gap-2">
     <router-link
       v-for="(image, index) in images"
       :key="image.id"
@@ -15,7 +15,7 @@
         alt="Cat"
         :width="image.width"
         :height="image.height"
-        class="w-full h-full object-cover border-2 border-indigo-200"
+        class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-indigo-200"
       />
     </router-link>
   </div>

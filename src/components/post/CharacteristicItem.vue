@@ -3,12 +3,12 @@
     <CharacteristicMeter :label="label" :value="value" />
   </template>
   <template v-else>
-    <p>
+    <p class="flex">
       <span
-        class="inline-block w-1/3 py-1 px-2 mr-3 break-all bg-indigo-50 text-indigo-900 rounded-md"
+        class="w-36 py-1 px-2 mr-3 mt-[-4px] break-all bg-indigo-50 text-indigo-900 rounded-md"
         >{{ label }}:</span
       >
-      <span class="font-semibold">{{ value }}</span>
+      <span class="w-[calc(100%_-_9.75rem)] font-semibold">{{ value }}</span>
     </p>
   </template>
 </template>

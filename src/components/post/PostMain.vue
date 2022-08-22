@@ -1,6 +1,6 @@
 <template>
   <div class="md:grid md:grid-cols-2 md:gap-5">
-    <div class="overflow-hidden">
+    <div class="mb-5 md:mb-0 overflow-hidden">
       <img
         :src="imgUrl"
         alt="Cat"
