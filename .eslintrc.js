@@ -24,7 +24,7 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['Preloader'],
+        ignores: ['Preloader', 'Spacer'],
       },
     ],
   },

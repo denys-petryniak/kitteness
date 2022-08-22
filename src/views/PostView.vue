@@ -7,8 +7,8 @@
       :postTitle="getPostBody.name"
       :postDescription="getPostBody.description"
       :postWikipediaUrl="getPostBody.wikipedia_url"
-      class="mb-4"
     />
+    <Spacer class="h-8" />
     <CharacteristicsSection
       v-if="getCharacteristics.length"
       :characteristics="getCharacteristics"
@@ -30,6 +30,7 @@ import { useRoute } from 'vue-router';
 import { usePostStore } from '@/stores/Post';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
+import Spacer from '@/components/layout/Spacer';
 import PostMain from '@/components/post/PostMain';
 import CharacteristicsSection from '@/components/post/CharacteristicsSection';
 
@@ -81,10 +82,6 @@ const getCharacteristics = computed(() => {
     {
       label: 'Child friendly',
       value: getPostBody.value.child_friendly,
-    },
-    {
-      label: 'Cat friendly',
-      value: getPostBody.value.cat_friendly,
     },
     {
       label: 'Dog friendly',
@@ -146,7 +143,7 @@ const getCharacteristics = computed(() => {
       value: getPostBody.value.shedding_level,
     },
     {
-      label: 'Short_legs',
+      label: 'Short legs',
       value: getPostBody.value.short_legs,
     },
     {

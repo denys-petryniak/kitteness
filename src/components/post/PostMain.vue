@@ -1,19 +1,19 @@
 <template>
-  <div class="flex justify-between">
-    <div class="w-1/2 p-3 overflow-hidden">
+  <div class="md:grid md:grid-cols-2 md:gap-5">
+    <div class="overflow-hidden">
       <img
         :src="imgUrl"
         alt="Cat"
         :width="imgWidth"
         :height="imgHeight"
-        class="rounded"
+        class="border-2 border-indigo-200 rounded"
       />
     </div>
-    <div class="w-1/2 p-3">
+    <div class="">
       <h1 class="mb-4 text-3xl font-bold">
         {{ postTitle }}
       </h1>
-      <p class="mb-4">{{ postDescription }}</p>
+      <p class="mb-5">{{ postDescription }}</p>
       <a
         :href="postWikipediaUrl"
         target="_blank"

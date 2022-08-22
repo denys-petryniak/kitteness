@@ -1,14 +1,14 @@
 <template>
-  <div class="border-l-4 border-indigo-500">
+  <div class="max-w-xl px-2 border-l-4 border-indigo-500">
     <template
-      v-for="characteristic in characteristics"
+      v-for="(characteristic, index) in characteristics"
       :key="characteristic.label"
     >
       <CharacteristicItem
-        v-if="characteristic.value"
         :label="characteristic.label"
         :value="characteristic.value"
       />
+      <Spacer v-if="!isLastElement(index)" class="h-3" />
     </template>
   </div>
 </template>
@@ -20,12 +20,17 @@ export default {
 </script>
 
 <script setup>
+import Spacer from '@/components/layout/Spacer';
 import CharacteristicItem from '@/components/post/CharacteristicItem';
 
-defineProps({
+const props = defineProps({
   characteristics: {
     type: Array,
     required: true,
   },
 });
+
+function isLastElement(index) {
+  return index === props.characteristics.length - 1;
+}
 </script>

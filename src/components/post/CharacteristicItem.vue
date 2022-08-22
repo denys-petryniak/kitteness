@@ -1,11 +1,11 @@
 <template>
-  <template v-if="Number(value)">
+  <template v-if="isNumber(value)">
     <CharacteristicMeter :label="label" :value="value" />
   </template>
   <template v-else>
-    <p class="p-2">
+    <p>
       <span
-        class="inline-block w-36 py-1 px-2 mr-2 bg-indigo-50 text-indigo-900 rounded-md"
+        class="inline-block w-1/3 py-1 px-2 mr-3 break-all bg-indigo-50 text-indigo-900 rounded-md"
         >{{ label }}:</span
       >
       <span class="font-semibold">{{ value }}</span>
@@ -32,4 +32,8 @@ defineProps({
     required: true,
   },
 });
+
+function isNumber(value) {
+  return typeof value == 'number';
+}
 </script>
