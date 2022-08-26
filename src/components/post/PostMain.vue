@@ -18,7 +18,7 @@
         :href="postWikipediaUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-cyan-800 hover:text-cyan-900 visited:text-indigo-900 font-semibold underline"
+        class="font-semibold underline"
         >Read more</a
       >
     </div>
