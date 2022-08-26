@@ -6,7 +6,7 @@
     <img
       src="https://www.numizmatik.ru/news_img/c28d3e53c2b5e680cac6dc3ffb037a57.jpeg"
       alt="Quoka"
-      class="w-full object-cover border-2 border-indigo-200"
+      class="w-full object-cover border-2 border-indigo-200 dark:border-indigo-300"
     />
   </div>
 </template>

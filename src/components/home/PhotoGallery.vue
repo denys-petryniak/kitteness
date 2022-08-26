@@ -15,7 +15,7 @@
         alt="Cat"
         :width="image.width"
         :height="image.height"
-        class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-indigo-200"
+        class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-indigo-200 dark:border-indigo-300"
       />
     </router-link>
   </div>

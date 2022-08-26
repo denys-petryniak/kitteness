@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply bg-cyan-50;
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  @apply bg-cyan-50 dark:bg-slate-700;
 }
 
 h1,
@@ -12,17 +18,18 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-cyan-600;
+  @apply text-cyan-600 dark:text-slate-100;
 }
 
 p {
-  @apply text-cyan-900;
+  @apply text-cyan-900 dark:text-slate-100 dark:hover:text-slate-200;
 }
 
+a,
 .router-link-active {
-  @apply text-cyan-700 hover:text-cyan-800;
+  @apply text-cyan-700 dark:text-slate-100 hover:text-cyan-800 dark:hover:text-slate-200;
 }
 
 .router-link-exact-active {
-  @apply text-cyan-700 hover:text-cyan-800 font-bold;
+  @apply text-cyan-700 dark:text-slate-100 hover:text-cyan-800 font-bold;
 }
