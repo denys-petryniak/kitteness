@@ -5,9 +5,9 @@
       :key="image.id"
       :to="{ name: 'post', params: { id: image.id } }"
       :class="
-        index % 3 === 2
-          ? ['w-full col-span-2 row-span-2 rounded overflow-hidden']
-          : ['w-full rounded overflow-hidden']
+        isEveryThirdElement(index)
+          ? ['w-full col-span-2 row-span-2']
+          : ['w-full']
       "
     >
       <img
@@ -15,7 +15,7 @@
         alt="Cat"
         :width="image.width"
         :height="image.height"
-        class="mb-2 md:mb-0 w-full h-full object-cover border-gray-200 dark:border-gray-300 rounded-xl"
+        class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-gray-200 rounded-xl"
       />
     </router-link>
   </div>
@@ -34,4 +34,8 @@ defineProps({
     required: true,
   },
 });
+
+function isEveryThirdElement(index) {
+  return index % 3 === 2;
+}
 </script>

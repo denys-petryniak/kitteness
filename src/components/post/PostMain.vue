@@ -6,7 +6,7 @@
         alt="Cat"
         :width="imgWidth"
         :height="imgHeight"
-        class="border-gray-200 dark:border-gray-300 rounded-xl"
+        class="border-2 border-gray-200 rounded-xl"
       />
     </div>
     <div class="">

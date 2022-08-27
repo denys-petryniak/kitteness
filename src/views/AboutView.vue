@@ -6,7 +6,7 @@
     <img
       src="@/assets/images/quoka.jpeg"
       alt="Quoka"
-      class="w-full object-cover border-2 border-gray-200 dark:border-gray-300 rounded-xl"
+      class="w-full object-cover border-2 border-gray-200 rounded-xl"
     />
   </div>
 </template>
