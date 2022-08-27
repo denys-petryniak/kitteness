@@ -12,9 +12,9 @@
     >
       <img
         :src="image.url"
-        alt="Cat"
         :width="image.width"
         :height="image.height"
+        alt="Cat"
         class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-gray-200 rounded-xl"
       />
     </router-link>

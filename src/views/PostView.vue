@@ -8,7 +8,7 @@
       :postDescription="getPostBody.description"
       :postWikipediaUrl="getPostBody.wikipedia_url"
     />
-    <Spacer class="h-8" />
+    <Spacer class="h-10 md:h-11 lg:h-12" />
     <CharacteristicsSection
       v-if="getCharacteristics.length"
       :characteristics="getCharacteristics"
