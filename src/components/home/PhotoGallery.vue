@@ -1,5 +1,5 @@
 <template>
-  <div class="md:grid md:grid-cols-4 md:auto-rows-auto md:gap-2">
+  <div class="gallery md:grid md:grid-cols-4 md:auto-rows-auto md:gap-2">
     <router-link
       v-for="(image, index) in images"
       :key="image.id"
@@ -39,3 +39,12 @@ function isEveryThirdElement(index) {
   return index % 3 === 2;
 }
 </script>
+
+<style scoped>
+.gallery > * {
+  @apply lg:transition lg:filter lg:ease-in lg:duration-150;
+}
+.gallery:hover > :not(:hover) {
+  @apply lg:brightness-75;
+}
+</style>

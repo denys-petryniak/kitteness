@@ -1,7 +1,10 @@
 <template>
   <div class="mb-6">
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">
-      Funny Cats Gallery
+      Welcome to the world of
+      <span class="underline decoration-pink-500 decoration-wavy decoration-2"
+        >CATS</span
+      ><span>😺</span>
     </h1>
     <BaseButton right text="Update Photos" @click="updateImages" />
   </div>
