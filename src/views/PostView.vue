@@ -1,9 +1,9 @@
 <template>
-  <div v-if="post">
+  <div v-if="state.body">
     <PostMain
-      :imgUrl="post.url"
-      :imgWidth="post.width"
-      :imgHeight="post.height"
+      :imgUrl="state.body.url"
+      :imgWidth="state.body.width"
+      :imgHeight="state.body.height"
       :postTitle="getPostBody.name"
       :postDescription="getPostBody.description"
       :postWikipediaUrl="getPostBody.wikipedia_url"
@@ -14,7 +14,7 @@
       :characteristics="getCharacteristics"
     />
   </div>
-  <ErrorMessage v-else-if="error" :message="error.message" />
+  <ErrorMessage v-else-if="state.error" :message="state.error.message" />
   <Preloader v-else />
 </template>
 
@@ -34,22 +34,22 @@ import Spacer from '@/components/layout/Spacer';
 import PostMain from '@/components/post/PostMain';
 import CharacteristicsSection from '@/components/post/CharacteristicsSection';
 
-const post = ref(null);
-const error = ref(null);
+const state = ref({ body: null, error: null });
 
 const route = useRoute();
-const id = route.params.id;
+const routeId = route.params.id;
 
-const postStore = usePostStore();
-postStore.getPostById(id);
+const store = usePostStore();
+const storePostId = store.post.body.id;
+if (storePostId !== routeId) store.getPostById(routeId);
 
 watchEffect(() => {
-  post.value = postStore.post;
-  error.value = postStore.error;
+  state.value = { body: store.post.body, error: store.post.error };
 });
 
 const getPostBody = computed(() => {
-  const [body] = post.value.breeds.length > 0 ? post.value.breeds : [];
+  const [body] =
+    state.value.body.breeds.length > 0 ? state.value.body.breeds : [];
   return body;
 });
 
