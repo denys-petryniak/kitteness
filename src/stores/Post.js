@@ -3,15 +3,16 @@ import { useFetch } from '@/composables/fetch';
 import { getFetchUrl } from '@/utils';
 
 export const usePostStore = defineStore('Post', {
-  state: () => ({ post: {}, error: '' }),
+  state: () => ({
+    post: { body: {}, error: '' },
+  }),
 
   actions: {
     getPostById(id) {
       const url = getFetchUrl({ path: `images/${id}` });
       const { data, error } = useFetch(url);
 
-      this.post = data;
-      this.error = error;
+      this.post = { body: data, error };
     },
   },
 });
