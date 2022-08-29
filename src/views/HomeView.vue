@@ -2,9 +2,14 @@
   <div class="mb-6">
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">
       Welcome to the world of
-      <span class="underline decoration-pink-500 decoration-wavy decoration-2"
+      <span
+        class="mr-3 underline decoration-pink-500 decoration-wavy decoration-2"
         >CATS</span
-      ><span>😺</span>
+      ><img
+        src="@/assets/images/icons/cat.png"
+        alt="Cat"
+        class="inline-block w-14 mt-[-12px]"
+      />
     </h1>
     <BaseButton right text="Update Photos" @click="updateImages" />
   </div>
