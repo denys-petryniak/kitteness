@@ -37,15 +37,8 @@ export default {
 </script>
 
 <script setup>
-defineProps({
-  isDark: {
-    type: Boolean,
-    required: false,
-  },
-});
-const emit = defineEmits(['toggleDark']);
+import { inject } from 'vue';
+import { isDarkKey } from '@/utils/keys';
 
-function toggleDark() {
-  emit('toggleDark');
-}
+const { isDark, toggleDark } = inject(isDarkKey, false);
 </script>

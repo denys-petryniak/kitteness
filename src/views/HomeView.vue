@@ -1,9 +1,9 @@
 <template>
   <div class="mb-6">
-    <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">
+    <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center leading-10">
       Welcome to the world of
       <span
-        class="mr-3 underline decoration-pink-500 decoration-wavy decoration-2"
+        class="mr-3 underline decoration-amber-500 decoration-wavy decoration-2"
         >CATS</span
       ><img
         src="@/assets/images/icons/cat.png"
