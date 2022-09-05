@@ -1,7 +1,5 @@
 # Funny Cats
 
-[DEMO](https://funny-cats-quoka.netlify.app/)
-
 ## Project setup
 ```
 npm install
