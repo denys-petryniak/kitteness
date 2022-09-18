@@ -3,19 +3,23 @@
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
   </div>
   <template v-if="state.breeds && state.breed">
-    <select
-      v-model="state.selectedBreedId"
-      @change="onChangeBreed"
-      class="block w-full max-w-xl mx-auto mb-6 pb-2 bg-transparent border-b-2 border-cyan-500"
-    >
-      <option
-        v-for="option in mappedBreeds"
-        :key="option.id"
-        :value="option.id"
+    <div class="select relative max-w-xl mx-auto">
+      <select
+        v-model="state.selectedBreedId"
+        @change="onChangeBreed"
+        class="block w-full mb-6 pb-1 text-lg md:text-xl text-indigo-500 dark:text-indigo-400 bg-transparent border-b-2 border-cyan-500 appearance-none outline-none"
       >
-        {{ option.name }}
-      </option>
-    </select>
+        <option
+          v-for="option in mappedBreeds"
+          :key="option.id"
+          :value="option.id"
+          class="bg-cyan-50 px-2"
+        >
+          {{ option.name }}
+        </option>
+      </select>
+      <span class="select-focus"></span>
+    </div>
     <carousel
       :settings="carouselSettings"
       class="max-w-4xl max-h-[500px] mx-auto mb-8"
@@ -26,7 +30,7 @@
           :width="slide.width"
           :height="slide.height"
           alt="Cat"
-          class="w-full h-full object-contain bg-cyan-100 border-2 border-gray-200 rounded-xl"
+          class="w-full h-full object-contain bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200 rounded-xl"
         />
       </slide>
       <template #addons>
@@ -41,6 +45,7 @@
       <router-link
         :key="state.breed[0].id"
         :to="{ name: 'post', params: { id: state.breed[0].id } }"
+        class="font-semibold underline"
       >
         Read more
       </router-link>
@@ -112,14 +117,28 @@ function onChangeBreed() {
 </script>
 
 <style scoped>
+.select-focus {
+  @apply absolute right-0 bottom-0 left-0 border-b-4 border-cyan-600 scale-0 transition-transform ease-in duration-300;
+}
+select:focus + .select-focus {
+  @apply scale-100 transition-transform ease-out duration-300;
+}
+
 .carousel__viewport,
 .carousel__track,
 .carousel__slide {
-  height: 500px !important;
+  @apply h-[300px] md:h-[500px] px-2;
 }
 
 ::v-deep .carousel__prev,
 ::v-deep .carousel__next {
-  @apply bg-cyan-500;
+  @apply box-content bg-cyan-500 border-2 border-solid border-gray-200;
+}
+
+::v-deep .carousel__prev {
+  @apply left-[8px];
+}
+::v-deep .carousel__next {
+  @apply right-[8px];
 }
 </style>
