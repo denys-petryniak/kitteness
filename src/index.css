@@ -9,7 +9,7 @@ body,
 }
 
 body {
-  @apply font-nunito bg-cyan-50 dark:bg-slate-700;
+  @apply font-nunito bg-cyan-50 dark:bg-slate-700 overflow-x-hidden;
 }
 
 h1,

@@ -4,7 +4,7 @@
     <div class="grow mt-[64px] container mx-auto py-12 md:py-16 px-5">
       <router-view v-slot="{ Component }">
         <KeepAlive :max="maxCachedInstances" :exclude="excludeComponentCaching">
-          <component :is="Component" :key="$route.fullPath"></component>
+          <component :is="Component" :key="$route.fullPath" />
         </KeepAlive>
       </router-view>
     </div>
@@ -14,10 +14,15 @@
 
 <script setup>
 import { ref, provide } from 'vue';
+// import { useRoute } from 'vue-router';
 import { useDark, useToggle } from '@vueuse/core';
 import { isDarkKey } from '@/utils/keys';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
+
+// const route = useRoute();
+// const id = route.fullPath;
+// console.log('id', id);
 
 const maxCachedInstances = ref(10);
 const excludeComponentCaching = ref(['PostView']);

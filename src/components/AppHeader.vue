@@ -5,6 +5,8 @@
     <nav>
       <router-link to="/">Home</router-link>
       <span class="px-2 text-cyan-500 dark:text-slate-100">|</span>
+      <router-link to="/breeds">Breeds</router-link>
+      <span class="px-2 text-cyan-500 dark:text-slate-100">|</span>
       <router-link to="/about">About</router-link>
     </nav>
     <ThemeToggle />
