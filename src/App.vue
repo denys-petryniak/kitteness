@@ -14,15 +14,10 @@
 
 <script setup>
 import { ref, provide } from 'vue';
-// import { useRoute } from 'vue-router';
 import { useDark, useToggle } from '@vueuse/core';
 import { isDarkKey } from '@/utils/keys';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
-
-// const route = useRoute();
-// const id = route.fullPath;
-// console.log('id', id);
 
 const maxCachedInstances = ref(10);
 const excludeComponentCaching = ref(['PostView']);
