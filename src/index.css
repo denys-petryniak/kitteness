@@ -22,7 +22,7 @@ h6 {
 }
 
 p {
-  @apply text-cyan-900 dark:text-slate-100 dark:hover:text-slate-200;
+  @apply text-cyan-900 dark:text-slate-100;
 }
 
 a,

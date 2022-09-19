@@ -1,61 +1,30 @@
 <template>
-  <div class="max-w-2xl m-auto">
+  <div class="max-w-4xl m-auto">
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
-  </div>
-  <template v-if="state.breeds && state.breed">
-    <div class="select relative max-w-xl mx-auto">
-      <select
+    <template v-if="state.breeds && state.breed">
+      <vSelect
         v-model="state.selectedBreedId"
-        @change="onChangeBreed"
-        class="block w-full mb-6 pb-1 text-lg md:text-xl text-indigo-500 dark:text-indigo-400 bg-transparent border-b-2 border-cyan-500 appearance-none outline-none"
-      >
-        <option
-          v-for="option in mappedBreeds"
-          :key="option.id"
-          :value="option.id"
-          class="bg-cyan-50 px-2"
-        >
-          {{ option.name }}
-        </option>
-      </select>
-      <span class="select-focus"></span>
-    </div>
-    <carousel
-      :settings="carouselSettings"
-      class="max-w-4xl max-h-[500px] mx-auto mb-8"
-    >
-      <slide v-for="slide in state.breed" :key="slide.id">
-        <img
-          :src="slide.url"
-          :width="slide.width"
-          :height="slide.height"
-          alt="Cat"
-          class="w-full h-full object-contain bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200 rounded-xl"
-        />
-      </slide>
-      <template #addons>
-        <navigation />
-      </template>
-    </carousel>
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="mb-5 font-bold italic">
-        {{ getBreedBody.temperament }}
-      </p>
-      <p class="mb-5">{{ getBreedBody.description }}</p>
-      <router-link
-        :key="state.breed[0].id"
-        :to="{ name: 'post', params: { id: state.breed[0].id } }"
-        class="font-semibold underline"
-      >
-        Read more
-      </router-link>
-    </div>
-  </template>
-  <ErrorMessage
-    v-else-if="state.breedsError || state.breedError"
-    :message="state[state.breedsError ? breedsError : breedError].message"
-  />
-  <Preloader v-else />
+        :options="mappedBreeds"
+        :reduce="(breed) => breed.id"
+        label="name"
+        :searchable="false"
+        :clearable="false"
+        @option:selected="onSelectedBreed"
+        class="select"
+      />
+      <ImageCarousel :settings="carouselSettings" :slides="state.breed" />
+      <BreedsBody
+        :temperament="getBreedBody.temperament"
+        :description="getBreedBody.description"
+        :breedId="state.breed[0].id"
+      />
+    </template>
+    <ErrorMessage
+      v-else-if="state.breedsError || state.breedError"
+      :message="state[state.breedsError ? breedsError : breedError].message"
+    />
+    <Preloader v-else />
+  </div>
 </template>
 
 <script>
@@ -67,8 +36,12 @@ export default {
 <script setup>
 import { ref, watchEffect, computed } from 'vue';
 import { useBreedsStore } from '@/stores/Breeds';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
+
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+
+import ImageCarousel from '@/components/ui/ImageCarousel';
+import BreedsBody from '@/components/breeds/BreedsBody';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
 
@@ -111,34 +84,34 @@ const getBreedBody = computed(() => {
   return body;
 });
 
-function onChangeBreed() {
+function onSelectedBreed() {
   store.getBreedById(state.value.selectedBreedId);
 }
 </script>
 
 <style scoped>
-.select-focus {
-  @apply absolute right-0 bottom-0 left-0 border-b-4 border-cyan-600 scale-0 transition-transform ease-in duration-300;
-}
-select:focus + .select-focus {
-  @apply scale-100 transition-transform ease-out duration-300;
+.select {
+  @apply max-w-4xl mx-auto mb-6 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
 }
 
-.carousel__viewport,
-.carousel__track,
-.carousel__slide {
-  @apply h-[300px] md:h-[500px] px-2;
+.select ::v-deep .vs__search::placeholder,
+.select ::v-deep .vs__dropdown-toggle,
+.select ::v-deep .vs__dropdown-menu {
+  @apply bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200;
+}
+.select ::v-deep .vs__open-indicator {
+  @apply fill-gray-200;
 }
 
-::v-deep .carousel__prev,
-::v-deep .carousel__next {
-  @apply box-content bg-cyan-500 border-2 border-solid border-gray-200;
+.select ::v-deep .vs__selected {
+  @apply text-inherit;
 }
 
-::v-deep .carousel__prev {
-  @apply left-[8px];
+.select ::v-deep .vs__dropdown-option {
+  @apply hover:bg-cyan-200 dark:hover:bg-cyan-900;
 }
-::v-deep .carousel__next {
-  @apply right-[8px];
+
+.select ::v-deep .vs__dropdown-option--highlight {
+  @apply bg-cyan-200 dark:bg-cyan-900;
 }
 </style>

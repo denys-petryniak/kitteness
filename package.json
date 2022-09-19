@@ -13,6 +13,7 @@
     "pinia": "^2.0.19",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue-select": "^4.0.0-beta.5",
     "vue3-carousel": "^0.1.46"
   },
   "devDependencies": {
