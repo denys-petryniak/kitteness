@@ -19,7 +19,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="font-semibold underline"
-        >Read more</a
+        >Wiki</a
       >
     </div>
   </div>

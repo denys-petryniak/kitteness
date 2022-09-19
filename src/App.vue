@@ -4,7 +4,7 @@
     <div class="grow mt-[64px] container mx-auto py-12 md:py-16 px-5">
       <router-view v-slot="{ Component }">
         <KeepAlive :max="maxCachedInstances" :exclude="excludeComponentCaching">
-          <component :is="Component" :key="$route.fullPath"></component>
+          <component :is="Component" :key="$route.fullPath" />
         </KeepAlive>
       </router-view>
     </div>

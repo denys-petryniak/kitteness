@@ -1,0 +1,66 @@
+<template>
+  <carousel :settings="settings" class="carousel">
+    <slide v-for="slide in slides" :key="slide.id">
+      <img
+        :src="slide.url"
+        :width="slide.width"
+        :height="slide.height"
+        alt="Cat"
+        class="w-full h-full object-contain bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200 rounded-xl"
+      />
+    </slide>
+    <template #addons>
+      <navigation />
+    </template>
+  </carousel>
+</template>
+
+<script>
+export default {
+  name: 'ImageCarousel',
+};
+</script>
+
+<script setup>
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
+
+defineProps({
+  settings: {
+    type: Object,
+    default: () => ({}),
+  },
+  slides: {
+    type: Array,
+    default: () => [],
+  },
+});
+</script>
+
+<style scoped>
+.carousel {
+  @apply max-h-[500px] mx-auto mb-8;
+}
+
+.carousel ::v-deep .carousel__viewport,
+.carousel ::v-deep .carousel__track,
+.carousel ::v-deep .carousel__slide {
+  @apply h-[300px] md:h-[500px];
+}
+
+.carousel ::v-deep .carousel__slide {
+  @apply px-2;
+}
+
+.carousel ::v-deep .carousel__prev,
+.carousel ::v-deep .carousel__next {
+  @apply box-content bg-cyan-300 dark:bg-cyan-900 border-2 border-solid border-gray-200;
+}
+
+.carousel ::v-deep .carousel__prev {
+  @apply left-2;
+}
+.carousel ::v-deep .carousel__next {
+  @apply right-2;
+}
+</style>
