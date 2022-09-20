@@ -4,10 +4,12 @@
   >
     <nav>
       <template v-for="(link, index) in links" :key="link.name">
-        <router-link :to="link.to">{{ link.name }}</router-link>
+        <router-link :to="link.to" class="font-semibold">{{
+          link.name
+        }}</router-link>
         <span
           v-if="!isLastElement(links, index)"
-          class="px-2 text-cyan-500 dark:text-slate-100"
+          class="px-2 text-cyan-500 dark:text-slate-100 font-semibold"
           >|</span
         >
       </template>

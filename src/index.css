@@ -25,11 +25,11 @@ p {
   @apply text-cyan-900 dark:text-slate-100;
 }
 
-a,
-.router-link-active {
+a {
   @apply text-cyan-700 dark:text-slate-100 hover:text-cyan-800 dark:hover:text-slate-200;
 }
 
+.router-link-active,
 .router-link-exact-active {
-  @apply text-cyan-700 dark:text-slate-100 hover:text-cyan-800 font-bold;
+  @apply text-indigo-700 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-300;
 }
