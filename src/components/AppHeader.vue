@@ -3,14 +3,14 @@
     class="fixed top-0 left-0 right-0 p-5 text-center backdrop-blur-lg bg-cyan-300/30 z-10"
   >
     <nav>
-      <router-link v-for="(link, index) in links" :key="link.name" :to="link.to"
-        >{{ link.name }}
+      <template v-for="(link, index) in links" :key="link.name">
+        <router-link :to="link.to">{{ link.name }}</router-link>
         <span
           v-if="!isLastElement(links, index)"
           class="px-2 text-cyan-500 dark:text-slate-100"
           >|</span
         >
-      </router-link>
+      </template>
     </nav>
     <ThemeToggle />
   </header>

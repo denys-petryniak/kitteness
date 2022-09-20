@@ -52,6 +52,10 @@ defineProps({
   @apply px-2;
 }
 
+.carousel :deep(.carousel__slide--visible) {
+  transform: rotateY(0);
+}
+
 .carousel :deep(.carousel__prev),
 .carousel :deep(.carousel__next) {
   @apply box-content bg-cyan-300 dark:bg-cyan-900 border-2 border-solid border-gray-200;
