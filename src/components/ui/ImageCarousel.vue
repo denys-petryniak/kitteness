@@ -42,25 +42,25 @@ defineProps({
   @apply max-h-[500px] mx-auto mb-8;
 }
 
-.carousel ::v-deep .carousel__viewport,
-.carousel ::v-deep .carousel__track,
-.carousel ::v-deep .carousel__slide {
+.carousel :deep(.carousel__viewport),
+.carousel :deep(.carousel__track),
+.carousel :deep(.carousel__slide) {
   @apply h-[300px] md:h-[500px];
 }
 
-.carousel ::v-deep .carousel__slide {
+.carousel :deep(.carousel__slide) {
   @apply px-2;
 }
 
-.carousel ::v-deep .carousel__prev,
-.carousel ::v-deep .carousel__next {
+.carousel :deep(.carousel__prev),
+.carousel :deep(.carousel__next) {
   @apply box-content bg-cyan-300 dark:bg-cyan-900 border-2 border-solid border-gray-200;
 }
 
-.carousel ::v-deep .carousel__prev {
+.carousel :deep(.carousel__prev) {
   @apply left-2;
 }
-.carousel ::v-deep .carousel__next {
+.carousel :deep(.carousel__next) {
   @apply right-2;
 }
 </style>

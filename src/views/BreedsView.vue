@@ -94,24 +94,24 @@ function onSelectedBreed() {
   @apply max-w-4xl mx-auto mb-6 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
 }
 
-.select ::v-deep .vs__search::placeholder,
-.select ::v-deep .vs__dropdown-toggle,
-.select ::v-deep .vs__dropdown-menu {
+.select :deep(.vs__search::placeholder),
+.select :deep(.vs__dropdown-toggle),
+.select :deep(.vs__dropdown-menu) {
   @apply bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200;
 }
-.select ::v-deep .vs__open-indicator {
+.select :deep(.vs__open-indicator) {
   @apply fill-gray-200;
 }
 
-.select ::v-deep .vs__selected {
+.select :deep(.vs__selected) {
   @apply text-inherit;
 }
 
-.select ::v-deep .vs__dropdown-option {
+.select :deep(.vs__dropdown-option) {
   @apply hover:bg-cyan-200 dark:hover:bg-cyan-900;
 }
 
-.select ::v-deep .vs__dropdown-option--highlight {
+.select :deep(.vs__dropdown-option--highlight) {
   @apply bg-cyan-200 dark:bg-cyan-900;
 }
 </style>
