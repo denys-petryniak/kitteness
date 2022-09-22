@@ -2,21 +2,17 @@
   <div class="max-w-4xl m-auto">
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
     <template v-if="state.breeds && state.breed">
-      <vSelect
-        v-model="state.selectedBreedId"
-        :options="mappedBreeds"
-        :reduce="(breed) => breed.id"
+      <CustomSelect
         label="name"
-        :searchable="false"
-        :clearable="false"
-        @option:selected="onSelectedBreed"
-        class="select"
+        :options="mappedBreeds"
+        v-model="state.selectedBreedId"
+        @update:modelValue="onSelectedBreed"
       />
       <ImageCarousel :settings="carouselSettings" :slides="state.breed" />
       <BreedsBody
         :temperament="getBreedBody.temperament"
         :description="getBreedBody.description"
-        :breedId="state.breed[0].id"
+        :breedId="getBreedId"
       />
     </template>
     <ErrorMessage
@@ -37,13 +33,11 @@ export default {
 import { ref, watchEffect, computed } from 'vue';
 import { useBreedsStore } from '@/stores/Breeds';
 
-import vSelect from 'vue-select';
-import 'vue-select/dist/vue-select.css';
-
+import CustomSelect from '@/components/ui/CustomSelect';
 import ImageCarousel from '@/components/ui/ImageCarousel';
-import BreedsBody from '@/components/breeds/BreedsBody';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
+import BreedsBody from '@/components/breeds/BreedsBody';
 
 const state = ref({
   breeds: null,
@@ -84,34 +78,9 @@ const getBreedBody = computed(() => {
   return body;
 });
 
+const getBreedId = computed(() => state.value.breed[0].id);
+
 function onSelectedBreed() {
   store.getBreedById(state.value.selectedBreedId);
 }
 </script>
-
-<style scoped>
-.select {
-  @apply max-w-4xl mx-auto mb-6 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
-}
-
-.select :deep(.vs__search::placeholder),
-.select :deep(.vs__dropdown-toggle),
-.select :deep(.vs__dropdown-menu) {
-  @apply bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200;
-}
-.select :deep(.vs__open-indicator) {
-  @apply fill-gray-200;
-}
-
-.select :deep(.vs__selected) {
-  @apply text-inherit;
-}
-
-.select :deep(.vs__dropdown-option) {
-  @apply hover:bg-cyan-200 dark:hover:bg-cyan-900;
-}
-
-.select :deep(.vs__dropdown-option--highlight) {
-  @apply bg-cyan-200 dark:bg-cyan-900;
-}
-</style>
