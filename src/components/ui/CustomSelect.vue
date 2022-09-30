@@ -58,7 +58,7 @@ const value = computed({
 
 <style scoped>
 .select {
-  @apply max-w-4xl mx-auto mb-6 pl-2 pr-2 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
+  @apply max-w-4xl mx-auto mb-6 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
 }
 
 .select :deep(.vs__search::placeholder),
