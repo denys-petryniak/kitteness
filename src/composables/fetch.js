@@ -2,6 +2,7 @@ import { ref, isRef, unref, watchEffect } from 'vue';
 
 export function useFetch(url) {
   const data = ref(null);
+  const isFetching = ref(true);
   const error = ref(null);
 
   async function doFetch() {
@@ -20,6 +21,8 @@ export function useFetch(url) {
       data.value = await res.json();
     } catch (e) {
       error.value = e;
+    } finally {
+      isFetching.value = false;
     }
   }
 
@@ -31,5 +34,5 @@ export function useFetch(url) {
     doFetch();
   }
 
-  return { data, error, retry: doFetch };
+  return { data, isFetching, error, retry: doFetch };
 }

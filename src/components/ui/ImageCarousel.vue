@@ -28,7 +28,10 @@ import 'vue3-carousel/dist/carousel.css';
 defineProps({
   settings: {
     type: Object,
-    default: () => ({}),
+    default: () => ({
+      wrapAround: true,
+      'items-to-show': 2,
+    }),
   },
   slides: {
     type: Array,
