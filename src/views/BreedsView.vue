@@ -1,18 +1,18 @@
 <template>
   <div class="max-w-4xl m-auto">
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
-    <template v-if="breeds.items && !breed.isFetching">
+    <template v-if="breeds.data && !breed.isFetching">
       <CustomSelect
         label="name"
-        :options="breeds.items"
+        :options="breeds.data"
         v-model="selectedBreedId"
         @update:modelValue="onSelectedBreed"
       />
-      <ImageCarousel :slides="breed.items" />
+      <ImageCarousel :slides="breed.data" />
       <BreedsBody
-        :temperament="breed.items[0].breeds[0].temperament"
-        :description="breed.items[0].breeds[0].description"
-        :breedId="breed.items[0].id"
+        :temperament="breed.data[0].breeds[0].temperament"
+        :description="breed.data[0].breeds[0].description"
+        :breedId="breed.data[0].id"
       />
     </template>
     <Preloader v-else-if="breed.isFetching" />

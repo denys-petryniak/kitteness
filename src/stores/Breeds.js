@@ -4,8 +4,8 @@ import { getFetchUrl } from '@/utils';
 
 export const useBreedsStore = defineStore('Breeds', {
   state: () => ({
-    breeds: { items: [], isFetching: null, error: null },
-    breed: { items: {}, isFetching: null, error: null },
+    breeds: { data: [], isFetching: null, error: null },
+    breed: { data: [], isFetching: null, error: null },
   }),
 
   actions: {
@@ -13,7 +13,7 @@ export const useBreedsStore = defineStore('Breeds', {
       const url = getFetchUrl({ path: 'breeds' });
       const { data, isFetching, error } = useFetch(url);
 
-      this.breeds = { items: data, isFetching, error };
+      this.breeds = { data, isFetching, error };
     },
 
     getBreedById(id = 'beng') {
@@ -22,7 +22,7 @@ export const useBreedsStore = defineStore('Breeds', {
       const url = getFetchUrl({ path: 'images/search', params });
       const { data, isFetching, error } = useFetch(url);
 
-      this.breed = { items: data, isFetching, error };
+      this.breed = { data, isFetching, error };
     },
   },
 });
