@@ -25,7 +25,7 @@ export default {
 import { ref } from 'vue';
 import BaseButton from '@/components/ui/BaseButton';
 
-const buttonText = ref('Update Photos');
+const buttonText = ref('Randomize');
 
 const emit = defineEmits(['fetchBreedsImages']);
 

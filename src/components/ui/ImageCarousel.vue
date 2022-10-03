@@ -1,6 +1,6 @@
 <template>
-  <carousel :settings="settings" class="carousel">
-    <slide v-for="slide in slides" :key="slide.id">
+  <Carousel :settings="settings" class="carousel" ref="carousel">
+    <Slide v-for="slide in slides" :key="slide.id">
       <img
         :src="slide.url"
         :width="slide.width"
@@ -8,11 +8,11 @@
         alt="Cat"
         class="w-full h-full object-contain bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200 rounded-xl"
       />
-    </slide>
+    </Slide>
     <template #addons>
-      <navigation />
+      <Navigation />
     </template>
-  </carousel>
+  </Carousel>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
 </script>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
@@ -37,6 +38,14 @@ defineProps({
     type: Array,
     default: () => [],
   },
+});
+
+const carousel = ref(null);
+
+onMounted(() => {
+  setTimeout(() => {
+    carousel.value.updateSlideWidth();
+  }, 500);
 });
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <HomeHeader @fetchBreedsImages="fetchBreedsImages" />
+  <HomeHeader @fetchBreedsImages="fetchBreedsImagesHandler" />
   <HomePhotoGallery v-if="images && !images.isFetching" :images="images.data" />
   <Preloader v-else-if="images.isFetching" />
   <ErrorMessage v-else-if="images.error" :message="images.error.message" />
@@ -12,6 +12,7 @@ export default {
 </script>
 
 <script setup>
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBreedsImagesStore } from '@/stores/BreedsImages';
 
@@ -24,5 +25,11 @@ const store = useBreedsImagesStore();
 const { fetchBreedsImages } = store;
 const { images } = storeToRefs(store);
 
-fetchBreedsImages();
+const imagesLimit = ref(11);
+
+function fetchBreedsImagesHandler() {
+  fetchBreedsImages({ limit: imagesLimit.value });
+}
+
+fetchBreedsImagesHandler();
 </script>

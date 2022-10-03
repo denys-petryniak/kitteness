@@ -2,17 +2,15 @@ import { defineStore } from 'pinia';
 import { useFetch } from '@/composables/fetch';
 import { getFetchUrl } from '@/utils';
 
-const imagesLimit = 11;
-
-const params = { has_breeds: true, limit: imagesLimit };
-const url = getFetchUrl({ path: 'images/search', params });
-
 export const useBreedsImagesStore = defineStore('breedsImages', {
   state: () => ({ images: { data: [], isFetching: null, error: null } }),
 
   actions: {
-    fetchBreedsImages() {
+    fetchBreedsImages({ limit }) {
+      const params = { has_breeds: true, limit };
+      const url = getFetchUrl({ path: 'images/search', params });
       const { data, isFetching, error } = useFetch(url);
+
       this.images = { data, isFetching, error };
     },
   },
