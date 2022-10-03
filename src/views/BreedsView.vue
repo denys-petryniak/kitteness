@@ -28,9 +28,9 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useBreedsStore } from '@/stores/Breeds';
-import { useBreedStore } from '@/stores/Breed';
+
+import useBreeds from '@/composables/breeds/useBreeds';
+import useBreed from '@/composables/breeds/useBreed';
 
 import CustomSelect from '@/components/ui/CustomSelect';
 import ImageCarousel from '@/components/ui/ImageCarousel';
@@ -40,20 +40,10 @@ import BreedsBody from '@/components/breeds/BreedsBody';
 
 const selectedBreed = ref('beng');
 
-const breedsStore = useBreedsStore();
-const { getBreeds } = breedsStore;
-const { breeds } = storeToRefs(breedsStore);
+const { breeds, getBreeds } = useBreeds();
+const { breed, getBreedBody, getBreedByIdHandler } = useBreed(selectedBreed);
 
 getBreeds();
-
-const breedStore = useBreedStore();
-const { getBreedById } = breedStore;
-const { breed, getBreedBody } = storeToRefs(breedStore);
-
-function getBreedByIdHandler() {
-  return getBreedById({ id: selectedBreed.value });
-}
-
 getBreedByIdHandler();
 
 const onSelectedBreed = () => {

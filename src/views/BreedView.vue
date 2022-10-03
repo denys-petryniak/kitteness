@@ -28,9 +28,9 @@ export default {
 </script>
 
 <script setup>
-import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-import { useBreedPostStore } from '@/stores/BreedPost';
+
+import useBreedPost from '@/composables/breeds/useBreedPost';
 
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
@@ -41,9 +41,12 @@ import BreedOptionsSection from '@/components/breed/BreedOptionsSection';
 const route = useRoute();
 const routeId = route.params.id;
 
-const store = useBreedPostStore();
-const { getBreedPostById } = store;
-const { breedPost, getBreedPostBody, getBreedPostOptions } = storeToRefs(store);
+const {
+  breedPost,
+  getBreedPostBody,
+  getBreedPostOptions,
+  getBreedPostByIdHandler,
+} = useBreedPost(routeId);
 
-getBreedPostById({ id: routeId });
+getBreedPostByIdHandler();
 </script>

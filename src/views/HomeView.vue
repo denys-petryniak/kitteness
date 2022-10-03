@@ -13,23 +13,17 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useBreedsImagesStore } from '@/stores/BreedsImages';
+
+import useBreedsImages from '@/composables/breeds/useBreedsImages';
 
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
 import HomeHeader from '@/components/home/HomeHeader';
 import HomePhotoGallery from '@/components/home/HomePhotoGallery';
 
-const store = useBreedsImagesStore();
-const { fetchBreedsImages } = store;
-const { images } = storeToRefs(store);
-
 const imagesLimit = ref(11);
 
-function fetchBreedsImagesHandler() {
-  fetchBreedsImages({ limit: imagesLimit.value });
-}
+const { images, fetchBreedsImagesHandler } = useBreedsImages(imagesLimit);
 
 fetchBreedsImagesHandler();
 </script>
