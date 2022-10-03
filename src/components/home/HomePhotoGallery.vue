@@ -3,7 +3,7 @@
     <router-link
       v-for="(image, index) in images"
       :key="image.id"
-      :to="{ name: 'post', params: { id: image.id } }"
+      :to="{ name: 'breed', params: { id: image.breeds[0].id } }"
       :class="
         isEveryThirdElement(index)
           ? ['w-full col-span-2 row-span-2']
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'PhotoGallery',
+  name: 'HomePhotoGallery',
 };
 </script>
 

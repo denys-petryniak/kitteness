@@ -11,7 +11,7 @@
         class="inline-block w-14 mt-[-12px]"
       />
     </h1>
-    <BaseButton right :text="buttonText" @click="fetchImages" />
+    <BaseButton right :text="buttonText" @click="fetchBreedsImages" />
   </div>
 </template>
 
@@ -27,9 +27,9 @@ import BaseButton from '@/components/ui/BaseButton';
 
 const buttonText = ref('Update Photos');
 
-const emit = defineEmits(['fetchImages']);
+const emit = defineEmits(['fetchBreedsImages']);
 
-function fetchImages() {
-  emit('fetchImages');
+function fetchBreedsImages() {
+  emit('fetchBreedsImages');
 }
 </script>

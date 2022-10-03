@@ -7,11 +7,11 @@ const imagesLimit = 11;
 const params = { has_breeds: true, limit: imagesLimit };
 const url = getFetchUrl({ path: 'images/search', params });
 
-export const useSearchImagesStore = defineStore('searchImages', {
+export const useBreedsImagesStore = defineStore('breedsImages', {
   state: () => ({ images: { data: [], isFetching: null, error: null } }),
 
   actions: {
-    fetchImages() {
+    fetchBreedsImages() {
       const { data, isFetching, error } = useFetch(url);
       this.images = { data, isFetching, error };
     },

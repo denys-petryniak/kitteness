@@ -24,7 +24,7 @@ const route = useRoute();
 const getComponentId = computed(() => `${route.fullPath}`);
 
 const maxCachedInstances = ref(10);
-const excludeComponentCaching = ref(['PostView']);
+const excludeComponentCaching = ref(['BreedView']);
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);

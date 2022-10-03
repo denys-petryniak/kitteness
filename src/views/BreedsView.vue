@@ -5,14 +5,14 @@
       <CustomSelect
         label="name"
         :options="breeds.data"
-        v-model="selectedBreedId"
+        v-model="selectedBreed"
         @update:modelValue="onSelectedBreed"
       />
       <ImageCarousel :slides="breed.data" />
       <BreedsBody
-        :temperament="breed.data[0].breeds[0].temperament"
-        :description="breed.data[0].breeds[0].description"
-        :breedId="breed.data[0].id"
+        :temperament="getBreedBody.temperament"
+        :description="getBreedBody.description"
+        :breedId="getBreedBody.id"
       />
     </template>
     <Preloader v-else-if="breed.isFetching" />
@@ -30,6 +30,7 @@ export default {
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBreedsStore } from '@/stores/Breeds';
+import { useBreedStore } from '@/stores/Breed';
 
 import CustomSelect from '@/components/ui/CustomSelect';
 import ImageCarousel from '@/components/ui/ImageCarousel';
@@ -37,16 +38,25 @@ import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
 import BreedsBody from '@/components/breeds/BreedsBody';
 
-const selectedBreedId = ref('beng');
+const selectedBreed = ref('beng');
 
-const store = useBreedsStore();
-const { getBreeds, getBreedById } = store;
-const { breeds, breed } = storeToRefs(store);
+const breedsStore = useBreedsStore();
+const { getBreeds } = breedsStore;
+const { breeds } = storeToRefs(breedsStore);
 
 getBreeds();
-getBreedById(selectedBreedId.value);
+
+const breedStore = useBreedStore();
+const { getBreedById } = breedStore;
+const { breed, getBreedBody } = storeToRefs(breedStore);
+
+function getBreedByIdHandler() {
+  return getBreedById({ id: selectedBreed.value });
+}
+
+getBreedByIdHandler();
 
 const onSelectedBreed = () => {
-  getBreedById(selectedBreedId.value);
+  getBreedByIdHandler();
 };
 </script>

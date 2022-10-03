@@ -11,11 +11,11 @@
     </div>
     <div class="">
       <h1 class="mb-4 text-3xl font-bold">
-        {{ postTitle }}
+        {{ title }}
       </h1>
-      <p class="mb-5">{{ postDescription }}</p>
+      <p class="mb-5">{{ description }}</p>
       <a
-        :href="postWikipediaUrl"
+        :href="wikipediaUrl"
         target="_blank"
         rel="noopener noreferrer"
         class="font-semibold underline"
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'PostMain',
+  name: 'BreedMain',
 };
 </script>
 
@@ -45,15 +45,15 @@ defineProps({
     type: Number,
     required: true,
   },
-  postTitle: {
+  title: {
     type: String,
     required: true,
   },
-  postDescription: {
+  description: {
     type: String,
     required: true,
   },
-  postWikipediaUrl: {
+  wikipediaUrl: {
     type: String,
     required: true,
   },

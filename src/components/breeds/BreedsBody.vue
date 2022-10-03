@@ -6,7 +6,7 @@
     <p class="mb-5">{{ description }}</p>
     <router-link
       :key="breedId"
-      :to="{ name: 'post', params: { id: breedId } }"
+      :to="{ name: 'breed', params: { id: breedId } }"
       class="font-semibold underline"
     >
       Read more
