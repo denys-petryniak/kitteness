@@ -42,5 +42,5 @@ const store = useBreedStore();
 const { getBreedById } = store;
 const { breed, getBreedBody, getBreedOptions } = storeToRefs(store);
 
-getBreedById({ id: routeId, imagesLimit: 1 });
+getBreedById({ id: routeId });
 </script>
