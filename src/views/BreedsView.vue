@@ -3,6 +3,7 @@
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
     <template v-if="breeds.data && !breed.isFetching">
       <CustomSelect
+        searchable
         label="name"
         :options="breeds.data"
         v-model="selectedBreed"
