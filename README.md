@@ -1,4 +1,4 @@
-# Funny Cats
+# Kitteness
 
 ## Project setup
 ```
