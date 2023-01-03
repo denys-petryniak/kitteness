@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-4 text-center bg-cyan-200 dark:bg-cyan-600">
+  <footer class="bg-cyan-200 p-4 text-center dark:bg-cyan-600">
     <p>©{{ getCurrentYear() }}</p>
   </footer>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <p class="p-5 text-2xl font-bold text-center">
+  <p class="p-5 text-center text-2xl font-bold">
     Oops! Error encountered: {{ message }}
   </p>
 </template>

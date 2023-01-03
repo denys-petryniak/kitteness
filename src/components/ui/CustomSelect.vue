@@ -59,13 +59,13 @@ const value = computed({
 
 <style scoped>
 .select {
-  @apply w-[calc(100%_-_1rem)] max-w-4xl mx-auto mb-6 text-lg md:text-xl text-cyan-900 dark:text-slate-100;
+  @apply mx-auto mb-6 w-[calc(100%_-_1rem)] max-w-4xl text-lg text-cyan-900 dark:text-slate-100 md:text-xl;
 }
 
 .select :deep(.vs__search::placeholder),
 .select :deep(.vs__dropdown-toggle),
 .select :deep(.vs__dropdown-menu) {
-  @apply bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200;
+  @apply border-2 border-gray-200 bg-cyan-100 dark:bg-cyan-800;
 }
 .select :deep(.vs__open-indicator) {
   @apply fill-gray-200;

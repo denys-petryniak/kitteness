@@ -1,12 +1,12 @@
 <template>
   <div class="md:grid md:grid-cols-2 md:gap-5">
-    <div class="mb-5 md:mb-0 overflow-hidden">
+    <div class="mb-5 overflow-hidden md:mb-0">
       <img
         :src="imgUrl"
         alt="Cat"
         :width="imgWidth"
         :height="imgHeight"
-        class="border-2 border-gray-200 rounded-xl"
+        class="rounded-xl border-2 border-gray-200"
       />
     </div>
     <div class="">

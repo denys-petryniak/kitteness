@@ -1,12 +1,12 @@
 <template>
-  <div class="gallery md:grid md:grid-cols-4 md:auto-rows-auto md:gap-2">
+  <div class="gallery md:grid md:auto-rows-auto md:grid-cols-4 md:gap-2">
     <router-link
       v-for="(image, index) in images"
       :key="image.id"
       :to="{ name: 'breed', params: { id: image.breeds[0].id } }"
       :class="
         isEveryThirdElement(index)
-          ? ['w-full col-span-2 row-span-2']
+          ? ['col-span-2 row-span-2 w-full']
           : ['w-full']
       "
     >
@@ -15,7 +15,7 @@
         :width="image.width"
         :height="image.height"
         alt="Cat"
-        class="mb-2 md:mb-0 w-full h-full object-cover border-2 border-gray-200 rounded-xl"
+        class="mb-2 h-full w-full rounded-xl border-2 border-gray-200 object-cover md:mb-0"
       />
     </router-link>
   </div>
@@ -42,7 +42,7 @@ function isEveryThirdElement(index) {
 
 <style scoped>
 .gallery > * {
-  @apply lg:transition lg:filter lg:ease-in lg:duration-150;
+  @apply lg:filter lg:transition lg:duration-150 lg:ease-in;
 }
 .gallery:hover > :not(:hover) {
   @apply lg:brightness-75;

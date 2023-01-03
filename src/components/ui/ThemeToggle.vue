@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute top-[50%] translate-y-[-50%] right-5 p-1 bg-cyan-300 rounded"
+    class="absolute top-[50%] right-5 translate-y-[-50%] rounded bg-cyan-300 p-1"
     @click="toggleDark()"
   >
     <svg

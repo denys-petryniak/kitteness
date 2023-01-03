@@ -1,7 +1,7 @@
 <template>
-  <div class="relative flex flex-col h-full">
+  <div class="relative flex h-full flex-col">
     <AppHeader class="shrink-0" />
-    <div class="grow mt-[64px] container mx-auto py-12 md:py-16 px-5">
+    <div class="container mx-auto mt-[64px] grow py-12 px-5 md:py-16">
       <router-view v-slot="{ Component }">
         <KeepAlive :max="maxCachedInstances" :exclude="excludeComponentCaching">
           <component :is="Component" :key="getComponentId" />

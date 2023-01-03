@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-4xl m-auto">
-    <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
+  <div class="m-auto max-w-4xl">
+    <h1 class="mb-8 text-center text-2xl font-bold md:text-3xl">Breeds</h1>
     <template v-if="breeds.data && !breed.isFetching">
       <CustomSelect
         v-model="selectedBreed"

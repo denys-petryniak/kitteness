@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <p class="mb-4 font-bold text-lg italic">
+    <p class="mb-4 text-lg font-bold italic">
       {{ temperament }}
     </p>
     <p class="mb-5">{{ description }}</p>

@@ -6,7 +6,7 @@
         :width="slide.width"
         :height="slide.height"
         alt="Cat"
-        class="w-full h-full object-contain bg-cyan-100 dark:bg-cyan-800 border-2 border-gray-200 rounded-xl"
+        class="h-full w-full rounded-xl border-2 border-gray-200 bg-cyan-100 object-contain dark:bg-cyan-800"
       />
     </Slide>
     <template #addons>
@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style scoped>
 .carousel {
-  @apply max-h-[500px] mx-auto mb-8;
+  @apply mx-auto mb-8 max-h-[500px];
 }
 
 .carousel :deep(.carousel__viewport),
@@ -71,7 +71,7 @@ onMounted(() => {
 
 .carousel :deep(.carousel__prev),
 .carousel :deep(.carousel__next) {
-  @apply box-content bg-cyan-300 dark:bg-cyan-900 border-2 border-solid border-gray-200;
+  @apply box-content border-2 border-solid border-gray-200 bg-cyan-300 dark:bg-cyan-900;
 }
 
 .carousel :deep(.carousel__prev) {
