@@ -3,17 +3,17 @@
     <h1 class="mb-8 text-2xl md:text-3xl font-bold text-center">Breeds</h1>
     <template v-if="breeds.data && !breed.isFetching">
       <CustomSelect
+        v-model="selectedBreed"
         searchable
         label="name"
         :options="breeds.data"
-        v-model="selectedBreed"
         @update:modelValue="onSelectedBreed"
       />
       <ImageCarousel :slides="breed.data" />
       <BreedsBody
         :temperament="getBreedBody.temperament"
         :description="getBreedBody.description"
-        :breedId="getBreedBody.id"
+        :breed-id="getBreedBody.id"
       />
     </template>
     <Preloader v-else-if="breed.isFetching" />

@@ -1,5 +1,5 @@
 <template>
-  <Carousel :settings="settings" class="carousel" ref="carousel">
+  <Carousel ref="carousel" :settings="settings" class="carousel">
     <Slide v-for="slide in slides" :key="slide.id">
       <img
         :src="slide.url"

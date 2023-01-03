@@ -1,12 +1,12 @@
 <template>
   <div v-if="breedPost.data && !breedPost.isFetching">
     <BreedMain
-      :imgUrl="breedPost.data[0].url"
-      :imgWidth="breedPost.data[0].width"
-      :imgHeight="breedPost.data[0].height"
+      :img-url="breedPost.data[0].url"
+      :img-width="breedPost.data[0].width"
+      :img-height="breedPost.data[0].height"
       :title="getBreedPostBody.name"
       :description="getBreedPostBody.description"
-      :wikipediaUrl="getBreedPostBody.wikipedia_url"
+      :wikipedia-url="getBreedPostBody.wikipedia_url"
     />
     <Spacer class="h-10 md:h-11 lg:h-12" />
     <BreedOptionsSection
