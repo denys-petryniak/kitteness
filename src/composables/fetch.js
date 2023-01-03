@@ -1,4 +1,4 @@
-import { ref, isRef, unref, watchEffect } from 'vue';
+import { isRef, ref, unref, watchEffect } from 'vue';
 
 export function useFetch(url) {
   const data = ref(null);

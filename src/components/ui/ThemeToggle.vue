@@ -38,6 +38,7 @@ export default {
 
 <script setup>
 import { inject } from 'vue';
+
 import { isDarkKey } from '@/utils/keys';
 
 const { isDark, toggleDark } = inject(isDarkKey, false);

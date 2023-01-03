@@ -26,6 +26,7 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
+
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const links = ref([

@@ -30,14 +30,13 @@ export default {
 <script setup>
 import { ref } from 'vue';
 
-import useBreeds from '@/composables/breeds/useBreeds';
-import useBreed from '@/composables/breeds/useBreed';
-
-import CustomSelect from '@/components/ui/CustomSelect';
-import ImageCarousel from '@/components/ui/ImageCarousel';
-import ErrorMessage from '@/components/ui/ErrorMessage';
-import Preloader from '@/components/ui/Preloader';
 import BreedsBody from '@/components/breeds/BreedsBody';
+import CustomSelect from '@/components/ui/CustomSelect';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import ImageCarousel from '@/components/ui/ImageCarousel';
+import Preloader from '@/components/ui/Preloader';
+import useBreed from '@/composables/breeds/useBreed';
+import useBreeds from '@/composables/breeds/useBreeds';
 
 const selectedBreed = ref('beng');
 

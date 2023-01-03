@@ -14,12 +14,11 @@ export default {
 <script setup>
 import { ref } from 'vue';
 
-import useBreedsImages from '@/composables/breeds/useBreedsImages';
-
-import ErrorMessage from '@/components/ui/ErrorMessage';
-import Preloader from '@/components/ui/Preloader';
 import HomeHeader from '@/components/home/HomeHeader';
 import HomePhotoGallery from '@/components/home/HomePhotoGallery';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import Preloader from '@/components/ui/Preloader';
+import useBreedsImages from '@/composables/breeds/useBreedsImages';
 
 const imagesLimit = ref(11);
 

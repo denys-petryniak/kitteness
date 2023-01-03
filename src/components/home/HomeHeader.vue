@@ -23,6 +23,7 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
+
 import BaseButton from '@/components/ui/BaseButton';
 
 const buttonText = ref('Randomize');

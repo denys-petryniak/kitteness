@@ -22,9 +22,10 @@ export default {
 </script>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
+
+import { onMounted, ref } from 'vue';
+import { Carousel, Navigation, Slide } from 'vue3-carousel';
 
 defineProps({
   settings: {

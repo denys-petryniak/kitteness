@@ -13,12 +13,13 @@
 </template>
 
 <script setup>
-import { ref, provide, computed } from 'vue';
-import { useRoute } from 'vue-router';
 import { useDark, useToggle } from '@vueuse/core';
-import { isDarkKey } from '@/utils/keys';
-import AppHeader from '@/components/AppHeader';
+import { computed, provide, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
 import AppFooter from '@/components/AppFooter';
+import AppHeader from '@/components/AppHeader';
+import { isDarkKey } from '@/utils/keys';
 
 const route = useRoute();
 const getComponentId = computed(() => `${route.fullPath}`);

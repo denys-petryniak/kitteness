@@ -1,4 +1,5 @@
 import { storeToRefs } from 'pinia';
+
 import { useBreedPostStore } from '@/stores/BreedPost';
 
 export default function useBreedPost(id) {

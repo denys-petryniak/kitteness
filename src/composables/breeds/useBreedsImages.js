@@ -1,4 +1,5 @@
 import { storeToRefs } from 'pinia';
+
 import { useBreedsImagesStore } from '@/stores/BreedsImages';
 
 export default function useBreedsImages(limit) {

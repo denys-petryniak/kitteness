@@ -30,13 +30,12 @@ export default {
 <script setup>
 import { useRoute } from 'vue-router';
 
-import useBreedPost from '@/composables/breeds/useBreedPost';
-
-import ErrorMessage from '@/components/ui/ErrorMessage';
-import Preloader from '@/components/ui/Preloader';
-import Spacer from '@/components/layout/Spacer';
 import BreedMain from '@/components/breed/BreedMain';
 import BreedOptionsSection from '@/components/breed/BreedOptionsSection';
+import Spacer from '@/components/layout/Spacer';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import Preloader from '@/components/ui/Preloader';
+import useBreedPost from '@/composables/breeds/useBreedPost';
 
 const route = useRoute();
 const routeId = route.params.id;

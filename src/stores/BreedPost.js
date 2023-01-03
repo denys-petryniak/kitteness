@@ -1,5 +1,6 @@
-import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
+import { computed, ref } from 'vue';
+
 import { useFetch } from '@/composables/fetch';
 import { getFetchUrl } from '@/utils';
 
