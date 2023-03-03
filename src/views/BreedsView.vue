@@ -7,7 +7,7 @@
         searchable
         label="name"
         :options="breeds.data"
-        @update:modelValue="onSelectedBreed"
+        @update:model-value="onSelectedBreed"
       />
       <ImageCarousel :slides="breed.data" />
       <BreedsBody

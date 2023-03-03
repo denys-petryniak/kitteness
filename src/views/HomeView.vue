@@ -1,5 +1,5 @@
 <template>
-  <HomeHeader @fetchBreedsImages="fetchBreedsImagesHandler" />
+  <HomeHeader @fetch-breeds-images="fetchBreedsImagesHandler" />
   <HomePhotoGallery v-if="images && !images.isFetching" :images="images.data" />
   <Preloader v-else-if="images.isFetching" />
   <ErrorMessage v-else-if="images.error" :message="images.error.message" />
