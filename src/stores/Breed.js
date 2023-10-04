@@ -16,7 +16,7 @@ export const useBreedStore = defineStore('Breed', () => {
   }
 
   const getBreedBody = computed(() => {
-    const [body] = breed.value.data[0]?.breeds;
+    const [body] = breed.value.data?.[0]?.breeds || {};
     return body;
   });
 

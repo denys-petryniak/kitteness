@@ -16,7 +16,7 @@ export const useBreedPostStore = defineStore('BreedPost', () => {
   }
 
   const getBreedPostBody = computed(() => {
-    const [body] = breedPost.value.data[0]?.breeds;
+    const [body] = breedPost.value.data?.[0]?.breeds || {};
     return body;
   });
 
