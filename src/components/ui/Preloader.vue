@@ -2,7 +2,7 @@
   <img
     src="https://media.giphy.com/media/6C4y1oxC6182MsyjvK/giphy.gif"
     alt="Cat"
-    class="fixed top-[50%] left-[50%] w-48 translate-y-[-50%] translate-x-[-50%] rounded-full"
+    class="fixed left-[50%] top-[50%] w-48 translate-x-[-50%] translate-y-[-50%] rounded-full"
   />
 </template>
 

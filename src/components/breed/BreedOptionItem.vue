@@ -1,7 +1,7 @@
 <template>
   <div class="flex" :class="{ 'items-center': isNumber(value) }">
     <div
-      class="mr-3 w-40 break-all rounded-md border-2 border-indigo-100 bg-indigo-50 py-1 px-2 text-indigo-900 dark:border-indigo-400 dark:bg-indigo-300 dark:text-indigo-50"
+      class="mr-3 w-40 break-all rounded-md border-2 border-indigo-100 bg-indigo-50 px-2 py-1 text-indigo-900 dark:border-indigo-400 dark:bg-indigo-300 dark:text-indigo-50"
     >
       {{ label }}:
     </div>
@@ -13,7 +13,7 @@
         v-for="(item, index) in max"
         :key="index"
         :style="{ width: getScaleDivisionWidth }"
-        class="relative inline-block h-5 text-[0] after:absolute after:top-0 after:right-0 after:h-full after:w-1 after:bg-cyan-400 after:content-[''] last:after:content-none dark:after:bg-cyan-700"
+        class="relative inline-block h-5 text-[0] after:absolute after:right-0 after:top-0 after:h-full after:w-1 after:bg-cyan-400 after:content-[''] last:after:content-none dark:after:bg-cyan-700"
         :class="{ ['bg-cyan-300 dark:bg-cyan-600']: index < value }"
       ></div>
     </div>

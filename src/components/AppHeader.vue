@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-10 bg-cyan-300/30 p-5 text-center backdrop-blur-lg"
+    class="fixed left-0 right-0 top-0 z-10 bg-cyan-300/30 p-5 text-center backdrop-blur-lg"
   >
     <nav>
       <template v-for="(link, index) in links" :key="link.name">
