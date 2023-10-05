@@ -57,29 +57,30 @@ const value = computed({
 });
 </script>
 
-<style scoped>
+<style>
 .select {
   @apply mx-auto mb-6 w-[calc(100%_-_1rem)] max-w-4xl text-lg text-cyan-900 dark:text-slate-100 md:text-xl;
 }
 
-.select :deep(.vs__search::placeholder),
-.select :deep(.vs__dropdown-toggle),
-.select :deep(.vs__dropdown-menu) {
+.select .vs__dropdown-menu,
+.select .vs__dropdown-toggle,
+.select .vs__search::placeholder {
   @apply border-2 border-gray-200 bg-cyan-100 dark:bg-cyan-800;
 }
-.select :deep(.vs__open-indicator) {
+
+.select .vs__open-indicator {
   @apply fill-gray-200;
 }
 
-.select :deep(.vs__selected) {
+.select .vs__selected {
   @apply text-inherit;
 }
 
-.select :deep(.vs__dropdown-option) {
+.select .vs__dropdown-option {
   @apply hover:bg-cyan-200 dark:hover:bg-cyan-900;
 }
 
-.select :deep(.vs__dropdown-option--highlight) {
+.select .vs__dropdown-option--highlight {
   @apply bg-cyan-200 dark:bg-cyan-900;
 }
 </style>

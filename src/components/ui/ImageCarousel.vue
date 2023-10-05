@@ -1,5 +1,5 @@
 <template>
-  <Carousel ref="carousel" :settings="settings" class="carousel">
+  <Carousel ref="carousel" wrapAround class="carousel">
     <Slide v-for="slide in slides" :key="slide.id">
       <img
         :src="slide.url"
@@ -28,13 +28,6 @@ import { onMounted, ref } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 
 defineProps({
-  settings: {
-    type: Object,
-    default: () => ({
-      wrapAround: true,
-      'items-to-show': 2,
-    }),
-  },
   slides: {
     type: Array,
     default: () => [],
@@ -50,34 +43,35 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .carousel {
   @apply mx-auto mb-8 max-h-[500px];
 }
 
-.carousel :deep(.carousel__viewport),
-.carousel :deep(.carousel__track),
-.carousel :deep(.carousel__slide) {
+.carousel .carousel__viewport,
+.carousel .carousel__track,
+.carousel .carousel__slide {
   @apply h-[300px] md:h-[500px];
 }
 
-.carousel :deep(.carousel__slide) {
+.carousel .carousel__slide {
   @apply px-2;
 }
 
-.carousel :deep(.carousel__slide--visible) {
+.carousel .carousel__slide--visible {
   transform: rotateY(0);
 }
 
-.carousel :deep(.carousel__prev),
-.carousel :deep(.carousel__next) {
-  @apply box-content border-2 border-solid border-gray-200 bg-cyan-300 dark:bg-cyan-900;
+.carousel .carousel__prev,
+.carousel .carousel__next {
+  @apply box-content rounded-full border-2 border-solid border-gray-200 bg-cyan-300 dark:bg-cyan-600;
 }
 
-.carousel :deep(.carousel__prev) {
+.carousel .carousel__prev {
   @apply left-2;
 }
-.carousel :deep(.carousel__next) {
+
+.carousel .carousel__next {
   @apply right-2;
 }
 </style>
