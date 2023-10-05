@@ -1,5 +1,5 @@
 <template>
-  <Carousel ref="carousel" wrapAround class="carousel">
+  <Carousel ref="carousel" wrap-around class="carousel">
     <Slide v-for="slide in slides" :key="slide.id">
       <img
         :src="slide.url"

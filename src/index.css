@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-play-running {
+    animation-play-state: running;
+  }
+
+  .animation-play-paused {
+    animation-play-state: paused;
+  }
+}
+
 html,
 body,
 #app {

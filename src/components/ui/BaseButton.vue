@@ -17,7 +17,7 @@ export default {
 defineProps({
   right: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   text: {
     type: String,
