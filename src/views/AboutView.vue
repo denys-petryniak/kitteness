@@ -12,25 +12,31 @@
         alt="Quokka"
         class="rounded-xl border-2 border-gray-200 object-cover"
         :class="
-          isDroppingObjectsCompleted
+          isFallingActive
             ? 'pointer-events-none cursor-default'
             : 'pointer-events-auto cursor-pointer'
         "
         title="Click me, don't be shy 😘"
-        @click="dropObjects"
+        @click="initFallingObjects"
       />
     </div>
     <div
-      v-for="object in droppingObjects"
+      v-for="object in fallingObjects"
       :key="object.id"
       :style="object.style"
-      class="dropping-object absolute"
+      :class="{ 'falling-object': isFallingActive }"
     >
-      <img :src="object.image" alt="Kitten" class="rounded-2xl" />
+      <img
+        :src="object.image.src"
+        :width="object.image.width"
+        :height="object.image.height"
+        :alt="object.image.alt"
+        class="rounded-2xl"
+      />
     </div>
     <BaseButton
       class="absolute bottom-0 left-0 opacity-0 hover:opacity-100"
-      :text="isShowHeart ? '🩷 Pause Magic 💚' : '🩷 Magic Button 💚'"
+      :text="isShowHeart ? 'Pause Magic 😁' : '🩷 Magic Button 💚'"
       @click="toggleHeartVisibility"
     />
     <div
@@ -67,28 +73,66 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 import BaseButton from '@/components/ui/BaseButton';
 
-const droppingObjects = ref([]);
-const isDroppingObjectsCompleted = ref(false);
+const FALLING_OBJECTS_COUNT = 10;
+const OBJECT_SIZE = 120;
+const ANIMATION_MIN_DURATION = 2;
+const ANIMATION_MAX_DURATION = 6;
 
-function dropObjects() {
-  const objectsCount = 10;
+const isFallingActive = ref(false);
+const fallingObjects = ref([]);
 
-  droppingObjects.value = Array.from({ length: objectsCount }, (_, index) => ({
-    id: index,
-    image: `https://placekitten.com/100/100?image=${index + 1}`,
-    style: {
-      top: '0',
-      left: `${Math.random() * 100}%`,
-      animationDuration: `${Math.random() * 4 + 2}s`,
-    },
-  }));
-
-  isDroppingObjectsCompleted.value = true;
+function getRandomLeftObjectGap() {
+  return `calc(${Math.random() * 100}% - ${OBJECT_SIZE / 3}px)`;
 }
+
+function initFallingObjects() {
+  isFallingActive.value = true;
+
+  fallingObjects.value = Array.from(
+    { length: FALLING_OBJECTS_COUNT },
+    (_, index) => ({
+      id: index,
+      image: {
+        src: `https://placekitten.com/${OBJECT_SIZE}/${OBJECT_SIZE}?image=${
+          index + 1
+        }`,
+        width: OBJECT_SIZE,
+        height: OBJECT_SIZE,
+        alt: 'Kitten',
+      },
+      style: {
+        position: 'absolute',
+        top: 0,
+        left: getRandomLeftObjectGap(),
+        width: `${OBJECT_SIZE}px`,
+        height: `${OBJECT_SIZE}px`,
+        animationDuration: `${
+          ANIMATION_MIN_DURATION + Math.random() * ANIMATION_MAX_DURATION
+        }s`,
+      },
+    }),
+  );
+}
+
+function resetAnimations() {
+  isShowHeart.value = false;
+  isFallingActive.value = false;
+  fallingObjects.value = [];
+}
+
+const route = useRoute();
+
+watch(
+  () => route.path,
+  () => {
+    resetAnimations();
+  },
+);
 
 const isShowHeart = ref(false);
 
@@ -98,18 +142,23 @@ function toggleHeartVisibility() {
 </script>
 
 <style scoped>
-.dropping-object {
-  top: 0;
-  animation: drop linear forwards;
+.falling-object {
+  animation: falling linear forwards;
 }
 
-@keyframes drop {
+@keyframes falling {
   0% {
-    top: 0;
+    opacity: 0;
+    transform: translate3d(0, -300px, 0);
+  }
+
+  30% {
+    opacity: 0.8;
   }
 
   100% {
-    top: 100%;
+    opacity: 1;
+    transform: translate3d(0, calc(100vh - 300px), 0);
   }
 }
 </style>

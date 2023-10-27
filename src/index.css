@@ -16,10 +16,11 @@ html,
 body,
 #app {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  @apply overflow-x-hidden bg-cyan-50 font-nunito dark:bg-slate-700;
+  @apply bg-cyan-50 font-nunito dark:bg-slate-700;
 }
 
 h1,
