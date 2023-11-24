@@ -1,5 +1,7 @@
 # Kitteness
 
+![image](https://github.com/denys-petryniak/kitteness/assets/16530588/38dda299-0bbe-4b6f-97b0-81c0fefc23e3)
+
 ## Project setup
 
 ```
