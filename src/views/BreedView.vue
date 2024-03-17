@@ -1,5 +1,13 @@
 <template>
-  <div v-if="breedPost.data && !breedPost.isFetching">
+  <template v-if="breedPost.error">
+    <ErrorMessage
+      :message="breedPost.error?.message || 'Error retrieving data'"
+    />
+  </template>
+  <template v-else-if="breedPost.data && breedPost.data.length === 0">
+    <NotFound />
+  </template>
+  <template v-else-if="breedPost.data && breedPost.data.length > 0">
     <BreedMain
       :img-url="breedPost.data[0].url"
       :img-width="breedPost.data[0].width"
@@ -13,12 +21,10 @@
       v-if="getBreedPostOptions.length"
       :options="getBreedPostOptions"
     />
-  </div>
-  <Preloader v-else-if="breedPost.isFetching" />
-  <ErrorMessage
-    v-else-if="breedPost.error"
-    :message="breedPost.error.message"
-  />
+  </template>
+  <template v-else>
+    <Preloader />
+  </template>
 </template>
 
 <script>
@@ -36,16 +42,11 @@ import SpacerBlock from '@/components/layout/SpacerBlock';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
 import useBreedPost from '@/composables/breeds/useBreedPost';
+import NotFound from '@/views/NotFound';
 
 const route = useRoute();
 const routeId = route.params.id;
 
-const {
-  breedPost,
-  getBreedPostBody,
-  getBreedPostOptions,
-  getBreedPostByIdHandler,
-} = useBreedPost(routeId);
-
-getBreedPostByIdHandler();
+const { breedPost, getBreedPostBody, getBreedPostOptions } =
+  useBreedPost(routeId);
 </script>
