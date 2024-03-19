@@ -1,25 +1,23 @@
 <template>
-  <template v-if="breedPost.error">
-    <ErrorMessage
-      :message="breedPost.error?.message || 'Error retrieving data'"
-    />
+  <template v-if="catPost.error">
+    <ErrorMessage :message="catPost.error?.message" />
   </template>
-  <template v-else-if="breedPost.data && breedPost.data.length === 0">
+  <template v-else-if="catPost.data && catPost.data.length === 0">
     <NotFound />
   </template>
-  <template v-else-if="breedPost.data && breedPost.data.length > 0">
+  <template v-else-if="catPost.data && catPost.data.length > 0">
     <BreedMain
-      :img-url="breedPost.data[0].url"
-      :img-width="breedPost.data[0].width"
-      :img-height="breedPost.data[0].height"
-      :title="getBreedPostBody.name"
-      :description="getBreedPostBody.description"
-      :wikipedia-url="getBreedPostBody.wikipedia_url"
+      :img-url="catPost.data[0].url"
+      :img-width="catPost.data[0].width"
+      :img-height="catPost.data[0].height"
+      :title="getCatPostBreed.name"
+      :description="getCatPostBreed.description"
+      :wikipedia-url="getCatPostBreed.wikipedia_url"
     />
     <SpacerBlock class="h-10 md:h-11 lg:h-12" />
     <BreedOptionsSection
-      v-if="getBreedPostOptions.length"
-      :options="getBreedPostOptions"
+      v-if="getCatPostBreedOptions.length"
+      :options="getCatPostBreedOptions"
     />
   </template>
   <template v-else>
@@ -34,6 +32,7 @@ export default {
 </script>
 
 <script setup>
+import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 
 import BreedMain from '@/components/breed/BreedMain';
@@ -41,12 +40,16 @@ import BreedOptionsSection from '@/components/breed/BreedOptionsSection';
 import SpacerBlock from '@/components/layout/SpacerBlock';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
-import useBreedPost from '@/composables/breeds/useBreedPost';
+import { useCatStore } from '@/stores/catStore';
 import NotFound from '@/views/NotFound';
 
 const route = useRoute();
 const routeId = route.params.id;
 
-const { breedPost, getBreedPostBody, getBreedPostOptions } =
-  useBreedPost(routeId);
+const store = useCatStore();
+const { fetchCatPostById } = store;
+
+fetchCatPostById(routeId);
+
+const { catPost, getCatPostBreed, getCatPostBreedOptions } = storeToRefs(store);
 </script>

@@ -11,7 +11,11 @@
         class="mt-[-12px] inline-block w-14"
       />
     </h1>
-    <BaseButton right :text="buttonText" @click="fetchBreedsImages" />
+    <BaseButton
+      right
+      text="Catify Again"
+      @click="emit('reloadRandomCatPictures')"
+    />
   </div>
 </template>
 
@@ -22,15 +26,7 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue';
-
 import BaseButton from '@/components/ui/BaseButton';
 
-const buttonText = ref('Randomize');
-
-const emit = defineEmits(['fetchBreedsImages']);
-
-function fetchBreedsImages() {
-  emit('fetchBreedsImages');
-}
+const emit = defineEmits(['reloadRandomCatPictures']);
 </script>

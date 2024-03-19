@@ -17,6 +17,7 @@ export function useFetch(url) {
     try {
       // unref() will return the ref value if it's a ref
       // otherwise the value will be returned as-is
+      isFetching.value = true;
       const res = await fetch(urlValue);
       data.value = await res.json();
     } catch (e) {
