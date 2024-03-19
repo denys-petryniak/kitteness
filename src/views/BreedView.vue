@@ -1,11 +1,6 @@
 <template>
-  <template v-if="catPost.error">
-    <ErrorMessage :message="catPost.error?.message" />
-  </template>
-  <template v-else-if="catPost.data && catPost.data.length === 0">
-    <NotFound />
-  </template>
-  <template v-else-if="catPost.data && catPost.data.length > 0">
+  <ErrorMessage v-if="catPost.error" :message="catPost.error.message" />
+  <template v-else-if="catPost.data?.length">
     <BreedMain
       :img-url="catPost.data[0].url"
       :img-width="catPost.data[0].width"
@@ -20,9 +15,8 @@
       :options="getCatPostBreedOptions"
     />
   </template>
-  <template v-else>
-    <Preloader />
-  </template>
+  <Preloader v-else-if="catPost.isFetching" />
+  <NotFound v-else />
 </template>
 
 <script>
