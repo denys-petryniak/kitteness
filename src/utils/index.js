@@ -8,3 +8,14 @@ export function getFetchUrl({ path, params }) {
 
   return url;
 }
+
+export function getTrueFetchUrl(path, params = {}) {
+  const url = new URL(path, API_URL);
+
+  url.searchParams.append('api_key', API_KEY);
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, value);
+  });
+
+  return url.toString();
+}
