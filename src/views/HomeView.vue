@@ -1,8 +1,14 @@
 <template>
-  <HomeHeader @fetch-breeds-images="fetchBreedsImagesHandler" />
-  <HomePhotoGallery v-if="images && !images.isFetching" :images="images.data" />
-  <Preloader v-else-if="images.isFetching" />
-  <ErrorMessage v-else-if="images.error" :message="images.error.message" />
+  <HomeHeader @reload-random-cat-pictures="randomCatPictures.retry" />
+  <ErrorMessage
+    v-if="randomCatPictures.error"
+    :message="randomCatPictures.error.message"
+  />
+  <HomePhotoGallery
+    v-else-if="randomCatPictures.data?.length"
+    :images="randomCatPictures.data"
+  />
+  <Preloader v-else-if="randomCatPictures.isFetching" />
 </template>
 
 <script>
@@ -12,17 +18,20 @@ export default {
 </script>
 
 <script setup>
+import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
 import HomeHeader from '@/components/home/HomeHeader';
 import HomePhotoGallery from '@/components/home/HomePhotoGallery';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import Preloader from '@/components/ui/Preloader';
-import useBreedsImages from '@/composables/breeds/useBreedsImages';
+import { useCatStore } from '@/stores/catStore';
 
-const imagesLimit = ref(11);
+const store = useCatStore();
+const { fetchRandomCatPictures } = store;
 
-const { images, fetchBreedsImagesHandler } = useBreedsImages(imagesLimit);
+const catPicturesLimit = ref(11);
+fetchRandomCatPictures(catPicturesLimit.value);
 
-fetchBreedsImagesHandler();
+const { randomCatPictures } = storeToRefs(store);
 </script>
