@@ -1,6 +1,6 @@
 import { isRef, ref, unref, watchEffect } from 'vue';
 
-export function useFetch(url) {
+export function useFetch(url, options = {}) {
   const data = ref(null);
   const isFetching = ref(true);
   const error = ref(null);
@@ -18,7 +18,7 @@ export function useFetch(url) {
       // unref() will return the ref value if it's a ref
       // otherwise the value will be returned as-is
       isFetching.value = true;
-      const res = await fetch(urlValue);
+      const res = await fetch(urlValue, options);
       data.value = await res.json();
     } catch (e) {
       error.value = e;
