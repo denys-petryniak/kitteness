@@ -98,7 +98,7 @@ function initFallingObjects() {
     (_, index) => ({
       id: index,
       image: {
-        src: `https://placekitten.com/${OBJECT_SIZE}/${OBJECT_SIZE}?image=${
+        src: `https://loremflickr.com/${OBJECT_SIZE}/${OBJECT_SIZE}?random=${
           index + 1
         }`,
         width: OBJECT_SIZE,
