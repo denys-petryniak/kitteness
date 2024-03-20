@@ -8,20 +8,31 @@ const fetchOptions = {
   },
 };
 
-export function fetchRandomCatPictures(limit = 10) {
-  const url = getFetchUrl('/v1/images/search', { has_breeds: true, limit });
+export function fetchCatPictures({ hasBreeds = true, breedIds, limit = 10 }) {
+  const params = {
+    has_breeds: hasBreeds,
+    breed_ids: breedIds,
+    limit,
+  };
+
+  const url = getFetchUrl('/v1/images/search', params);
 
   return useFetch(url, fetchOptions);
 }
 
 export function fetchCatPostById(id, limit = 1) {
-  const url = getFetchUrl('/v1/images/search', { breed_ids: id, limit });
+  const params = {
+    breed_ids: id,
+    limit,
+  };
+
+  const url = getFetchUrl('/v1/images/search', params);
 
   return useFetch(url, fetchOptions);
 }
 
 export function fetchCatBreeds() {
-  const url = getFetchUrl('/v1/breeds', {});
+  const url = getFetchUrl('/v1/breeds');
 
   return useFetch(url, fetchOptions);
 }

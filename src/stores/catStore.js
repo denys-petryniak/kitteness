@@ -3,22 +3,25 @@ import { computed, ref } from 'vue';
 
 import {
   fetchCatBreeds,
+  fetchCatPictures,
   fetchCatPostById,
-  fetchRandomCatPictures,
 } from '@/services/theCatApi';
 
 export const useCatStore = defineStore('catStore', () => {
-  const randomCatPictures = ref({
+  const catPictures = ref({
     data: null,
     isFetching: true,
     error: null,
     retry: null,
   });
 
-  async function fetchRandomCatPicturesAction(limit) {
-    const { data, isFetching, error, retry } =
-      await fetchRandomCatPictures(limit);
-    randomCatPictures.value = { data, isFetching, error, retry };
+  async function fetchCatPicturesAction({ hasBreeds, breedIds, limit }) {
+    const { data, isFetching, error, retry } = await fetchCatPictures({
+      hasBreeds,
+      breedIds,
+      limit,
+    });
+    catPictures.value = { data, isFetching, error, retry };
   }
 
   const catPost = ref({ data: null, isFetching: true, error: null });
@@ -151,13 +154,18 @@ export const useCatStore = defineStore('catStore', () => {
     catBreeds.value = { data, isFetching, error };
   }
 
+  const getBreedById = computed(() => {
+    return (id) => catBreeds.value.data?.find((breed) => breed.id === id);
+  });
+
   return {
-    randomCatPictures,
+    catPictures,
     catPost,
     getCatPostBreed,
     getCatPostBreedOptions,
     catBreeds,
-    fetchRandomCatPictures: fetchRandomCatPicturesAction,
+    getBreedById,
+    fetchCatPictures: fetchCatPicturesAction,
     fetchCatPostById: fetchCatPostByIdAction,
     fetchCatBreeds: fetchCatBreedsAction,
   };

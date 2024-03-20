@@ -1,14 +1,11 @@
 <template>
-  <HomeHeader @reload-random-cat-pictures="randomCatPictures.retry" />
-  <ErrorMessage
-    v-if="randomCatPictures.error"
-    :message="randomCatPictures.error.message"
-  />
+  <HomeHeader @reload-cat-pictures="catPictures.retry" />
+  <ErrorMessage v-if="catPictures.error" :message="catPictures.error.message" />
   <HomePhotoGallery
-    v-else-if="randomCatPictures.data?.length"
-    :images="randomCatPictures.data"
+    v-else-if="catPictures.data?.length"
+    :images="catPictures.data"
   />
-  <Preloader v-else-if="randomCatPictures.isFetching" />
+  <Preloader v-else-if="catPictures.isFetching" />
 </template>
 
 <script>
@@ -19,7 +16,6 @@ export default {
 
 <script setup>
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
 
 import HomeHeader from '@/components/home/HomeHeader';
 import HomePhotoGallery from '@/components/home/HomePhotoGallery';
@@ -28,10 +24,9 @@ import Preloader from '@/components/ui/Preloader';
 import { useCatStore } from '@/stores/catStore';
 
 const store = useCatStore();
-const { fetchRandomCatPictures } = store;
+const { fetchCatPictures } = store;
 
-const catPicturesLimit = ref(11);
-fetchRandomCatPictures(catPicturesLimit.value);
+fetchCatPictures({ limit: 11 });
 
-const { randomCatPictures } = storeToRefs(store);
+const { catPictures } = storeToRefs(store);
 </script>

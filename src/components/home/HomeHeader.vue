@@ -11,11 +11,7 @@
         class="mt-[-12px] inline-block w-14"
       />
     </h1>
-    <BaseButton
-      right
-      text="Catify Again"
-      @click="emit('reloadRandomCatPictures')"
-    />
+    <BaseButton right text="Catify Again" @click="emit('reloadCatPictures')" />
   </div>
 </template>
 
@@ -28,5 +24,5 @@ export default {
 <script setup>
 import BaseButton from '@/components/ui/BaseButton';
 
-const emit = defineEmits(['reloadRandomCatPictures']);
+const emit = defineEmits(['reloadCatPictures']);
 </script>
