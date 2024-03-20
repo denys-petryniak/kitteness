@@ -2,26 +2,32 @@
   <div class="m-auto max-w-4xl">
     <h1 class="mb-8 text-center text-2xl font-bold md:text-3xl">Breeds</h1>
     <ErrorMessage
-      v-if="catBreeds.error || catPictures.error"
+      v-if="catBreeds.error || carouselCatPictures.error"
       :message="
-        catBreeds.error ? catBreeds.error.message : catPictures.error.message
+        catBreeds.error
+          ? catBreeds.error.message
+          : carouselCatPictures.error.message
       "
     />
-    <template v-else-if="catBreeds.data?.length && catPictures.data?.length">
+    <template
+      v-else-if="catBreeds.data?.length && carouselCatPictures.data?.length"
+    >
       <CustomSelect
         v-model="selectedBreedId"
         searchable
         label="name"
         :options="catBreeds.data"
       />
-      <ImageCarousel :slides="catPictures.data" />
+      <ImageCarousel :slides="carouselCatPictures.data" />
       <BreedsBody
         :temperament="getBreedById(selectedBreedId).temperament"
         :description="getBreedById(selectedBreedId).description"
         :breed-id="getBreedById(selectedBreedId).id"
       />
     </template>
-    <Preloader v-else-if="catPictures.isFetching || catBreeds.isFetching" />
+    <Preloader
+      v-else-if="carouselCatPictures.isFetching || catBreeds.isFetching"
+    />
   </div>
 </template>
 
@@ -43,15 +49,15 @@ import Preloader from '@/components/ui/Preloader';
 import { useCatStore } from '@/stores/catStore';
 
 const store = useCatStore();
-const { fetchCatBreeds, fetchCatPictures } = store;
+const { fetchCatBreeds, fetchCarouselCatPictures } = store;
 
 fetchCatBreeds();
 
 const selectedBreedId = ref('beng');
 
 watchEffect(async () => {
-  await fetchCatPictures({ breedIds: selectedBreedId.value, limit: 8 });
+  await fetchCarouselCatPictures({ breedIds: selectedBreedId.value, limit: 8 });
 });
 
-const { catBreeds, getBreedById, catPictures } = storeToRefs(store);
+const { catBreeds, getBreedById, carouselCatPictures } = storeToRefs(store);
 </script>

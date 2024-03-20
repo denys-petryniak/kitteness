@@ -24,6 +24,25 @@ export const useCatStore = defineStore('catStore', () => {
     catPictures.value = { data, isFetching, error, retry };
   }
 
+  const carouselCatPictures = ref({
+    data: null,
+    isFetching: true,
+    error: null,
+  });
+
+  async function fetchCarouselCatPicturesAction({
+    hasBreeds,
+    breedIds,
+    limit,
+  }) {
+    const { data, isFetching, error } = await fetchCatPictures({
+      hasBreeds,
+      breedIds,
+      limit,
+    });
+    carouselCatPictures.value = { data, isFetching, error };
+  }
+
   const catPost = ref({ data: null, isFetching: true, error: null });
 
   async function fetchCatPostByIdAction(id, limit) {
@@ -160,12 +179,14 @@ export const useCatStore = defineStore('catStore', () => {
 
   return {
     catPictures,
+    carouselCatPictures,
     catPost,
     getCatPostBreed,
     getCatPostBreedOptions,
     catBreeds,
     getBreedById,
     fetchCatPictures: fetchCatPicturesAction,
+    fetchCarouselCatPictures: fetchCarouselCatPicturesAction,
     fetchCatPostById: fetchCatPostByIdAction,
     fetchCatBreeds: fetchCatBreedsAction,
   };
