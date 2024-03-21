@@ -22,7 +22,7 @@
       <BreedsBody
         :temperament="getBreedById(selectedBreedId).temperament"
         :description="getBreedById(selectedBreedId).description"
-        :breed-id="getBreedById(selectedBreedId).id"
+        :wikipedia-url="getBreedById(selectedBreedId).wikipedia_url"
       />
     </template>
     <Preloader

@@ -4,13 +4,13 @@
       {{ temperament }}
     </p>
     <p class="mb-5">{{ description }}</p>
-    <router-link
-      :key="breedId"
-      :to="{ name: 'breed', params: { id: breedId } }"
+    <a
+      :href="wikipediaUrl"
+      target="_blank"
+      rel="noopener noreferrer"
       class="font-semibold underline"
+      >Wiki</a
     >
-      Read more
-    </router-link>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ defineProps({
     type: String,
     default: '',
   },
-  breedId: {
+  wikipediaUrl: {
     type: String,
     default: '',
   },

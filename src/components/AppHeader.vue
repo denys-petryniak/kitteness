@@ -31,7 +31,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const links = ref([
   {
-    name: 'Home',
+    name: 'Gallery',
     to: '/',
   },
   {

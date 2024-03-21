@@ -2,11 +2,11 @@
   <div class="relative flex h-full flex-col">
     <AppHeader class="shrink-0" />
     <div class="container mx-auto mt-[64px] grow px-5 py-12 md:py-16">
-      <router-view v-slot="{ Component }">
+      <RouterView v-slot="{ Component }">
         <KeepAlive :max="maxCachedInstances" :exclude="excludeComponentCaching">
-          <component :is="Component" :key="getComponentId" />
+          <component :is="Component" :key="$route.fullPath" />
         </KeepAlive>
-      </router-view>
+      </RouterView>
     </div>
     <AppFooter class="shrink-0" />
   </div>
@@ -14,21 +14,17 @@
 
 <script setup>
 import { useDark, useToggle } from '@vueuse/core';
-import { computed, provide, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { provide, ref } from 'vue';
 
 import AppFooter from '@/components/AppFooter';
 import AppHeader from '@/components/AppHeader';
 import { isDarkKey } from '@/utils/keys';
 
-const route = useRoute();
-const getComponentId = computed(() => `${route.fullPath}`);
-
-const maxCachedInstances = ref(10);
-const excludeComponentCaching = ref([]);
-
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 provide(isDarkKey, { isDark, toggleDark });
+
+const maxCachedInstances = ref(10);
+const excludeComponentCaching = ref([]);
 </script>
