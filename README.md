@@ -1,6 +1,6 @@
 # Kitteness
 
-<img src="https://github.com/denys-petryniak/kitteness/assets/16530588/38dda299-0bbe-4b6f-97b0-81c0fefc23e3" alt="image" width="650">
+<img width="650" alt="image" src="https://github.com/denys-petryniak/kitteness/assets/16530588/2f9f5395-949c-4fe2-a65c-2c8ca36d4545">
 
 ## Explore in StackBlitz
 
