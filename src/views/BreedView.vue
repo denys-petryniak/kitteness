@@ -27,6 +27,7 @@ export default {
 
 <script setup>
 import { storeToRefs } from 'pinia';
+import { watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 import BreedMain from '@/components/breed/BreedMain';
@@ -43,7 +44,9 @@ const routeId = route.params.id;
 const store = useCatStore();
 const { fetchCatPostById } = store;
 
-fetchCatPostById(routeId);
+watchEffect(async () => {
+  await fetchCatPostById(routeId);
+});
 
 const { catPost, getCatPostBreed, getCatPostBreedOptions } = storeToRefs(store);
 </script>

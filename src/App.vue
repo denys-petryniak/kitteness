@@ -26,5 +26,5 @@ const toggleDark = useToggle(isDark);
 provide(isDarkKey, { isDark, toggleDark });
 
 const maxCachedInstances = ref(10);
-const excludeComponentCaching = ref([]);
+const excludeComponentCaching = ref(['BreedView']);
 </script>
