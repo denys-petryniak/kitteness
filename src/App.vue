@@ -3,7 +3,7 @@
     <AppHeader class="shrink-0" />
     <div class="container mx-auto mt-[64px] grow px-5 py-12 md:py-16">
       <RouterView v-slot="{ Component }">
-        <KeepAlive :max="maxCachedInstances" :exclude="excludeComponentCaching">
+        <KeepAlive :max="maxCachedInstances">
           <component :is="Component" :key="$route.fullPath" />
         </KeepAlive>
       </RouterView>
@@ -26,5 +26,4 @@ const toggleDark = useToggle(isDark);
 provide(isDarkKey, { isDark, toggleDark });
 
 const maxCachedInstances = ref(10);
-const excludeComponentCaching = ref(['BreedView']);
 </script>

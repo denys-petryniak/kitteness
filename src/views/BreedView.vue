@@ -39,13 +39,12 @@ import { useCatStore } from '@/stores/catStore';
 import NotFound from '@/views/NotFound';
 
 const route = useRoute();
-const routeId = route.params.id;
 
 const store = useCatStore();
 const { fetchCatPostById } = store;
 
-watchEffect(async () => {
-  await fetchCatPostById(routeId);
+watchEffect(() => {
+  fetchCatPostById(route.params.id);
 });
 
 const { catPost, getCatPostBreed, getCatPostBreedOptions } = storeToRefs(store);

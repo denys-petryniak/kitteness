@@ -24,7 +24,7 @@ export default {
 <script setup>
 import 'vue3-carousel/dist/carousel.css';
 
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 
 defineProps({
@@ -35,11 +35,16 @@ defineProps({
 });
 
 const carousel = ref(null);
+let updateTimeoutId = null;
 
 onMounted(() => {
-  setTimeout(() => {
-    carousel.value.updateSlideWidth();
+  updateTimeoutId = setTimeout(() => {
+    carousel.value?.updateSlideWidth();
   }, 500);
+});
+
+onBeforeUnmount(() => {
+  if (updateTimeoutId) clearTimeout(updateTimeoutId);
 });
 </script>
 

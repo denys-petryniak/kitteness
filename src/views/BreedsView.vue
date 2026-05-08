@@ -55,8 +55,8 @@ fetchCatBreeds();
 
 const selectedBreedId = ref('beng');
 
-watchEffect(async () => {
-  await fetchCarouselCatPictures({ breedIds: selectedBreedId.value, limit: 8 });
+watchEffect(() => {
+  fetchCarouselCatPictures({ breedIds: selectedBreedId.value, limit: 8 });
 });
 
 const { catBreeds, getBreedById, carouselCatPictures } = storeToRefs(store);

@@ -7,6 +7,40 @@ import {
   fetchCatPostById,
 } from '@/services/theCatApi';
 
+const formatBoolean = (value) => (value ? 'Yes' : 'No');
+const formatWeight = (weight) =>
+  `imperial: ${weight.imperial} | metric: ${weight.metric}`;
+
+// Rating fields stay numeric so BreedOptionItem renders them as a 5-segment bar.
+// Boolean fields are formatted to Yes/No strings so they render as text.
+const BREED_OPTION_FIELDS = [
+  { key: 'origin', label: 'Origin' },
+  { key: 'temperament', label: 'Temperament' },
+  { key: 'weight', label: 'Weight', format: formatWeight },
+  { key: 'life_span', label: 'Life span' },
+  { key: 'adaptability', label: 'Adaptability' },
+  { key: 'affection_level', label: 'Affection level' },
+  { key: 'child_friendly', label: 'Child friendly' },
+  { key: 'dog_friendly', label: 'Dog friendly' },
+  { key: 'stranger_friendly', label: 'Stranger friendly' },
+  { key: 'energy_level', label: 'Energy level' },
+  { key: 'grooming', label: 'Grooming' },
+  { key: 'health_issues', label: 'Health issues' },
+  { key: 'intelligence', label: 'Intelligence' },
+  { key: 'shedding_level', label: 'Shedding level' },
+  { key: 'social_needs', label: 'Social needs' },
+  { key: 'vocalisation', label: 'Vocalisation' },
+  { key: 'experimental', label: 'Experimental', format: formatBoolean },
+  { key: 'hairless', label: 'Hairless', format: formatBoolean },
+  { key: 'hypoallergenic', label: 'Hypoallergenic', format: formatBoolean },
+  { key: 'indoor', label: 'Indoor', format: formatBoolean },
+  { key: 'natural', label: 'Natural', format: formatBoolean },
+  { key: 'rare', label: 'Rare', format: formatBoolean },
+  { key: 'rex', label: 'Rex', format: formatBoolean },
+  { key: 'short_legs', label: 'Short legs', format: formatBoolean },
+  { key: 'suppressed_tail', label: 'Suppressed tail', format: formatBoolean },
+];
+
 export const useCatStore = defineStore('catStore', () => {
   const catPictures = ref({
     data: null,
@@ -15,8 +49,8 @@ export const useCatStore = defineStore('catStore', () => {
     retry: null,
   });
 
-  async function fetchCatPicturesAction({ hasBreeds, breedIds, limit }) {
-    const { data, isFetching, error, retry } = await fetchCatPictures({
+  function fetchCatPicturesAction({ hasBreeds, breedIds, limit }) {
+    const { data, isFetching, error, retry } = fetchCatPictures({
       hasBreeds,
       breedIds,
       limit,
@@ -30,12 +64,8 @@ export const useCatStore = defineStore('catStore', () => {
     error: null,
   });
 
-  async function fetchCarouselCatPicturesAction({
-    hasBreeds,
-    breedIds,
-    limit,
-  }) {
-    const { data, isFetching, error } = await fetchCatPictures({
+  function fetchCarouselCatPicturesAction({ hasBreeds, breedIds, limit }) {
+    const { data, isFetching, error } = fetchCatPictures({
       hasBreeds,
       breedIds,
       limit,
@@ -45,8 +75,8 @@ export const useCatStore = defineStore('catStore', () => {
 
   const catPost = ref({ data: null, isFetching: true, error: null });
 
-  async function fetchCatPostByIdAction(id, limit) {
-    const { data, isFetching, error } = await fetchCatPostById(id, limit);
+  function fetchCatPostByIdAction(id, limit) {
+    const { data, isFetching, error } = fetchCatPostById(id, limit);
     catPost.value = { data, isFetching, error };
   }
 
@@ -58,118 +88,20 @@ export const useCatStore = defineStore('catStore', () => {
   });
 
   const getCatPostBreedOptions = computed(() => {
-    return [
-      {
-        label: 'Origin',
-        value: getCatPostBreed.value.origin,
-      },
-      {
-        label: 'Temperament',
-        value: getCatPostBreed.value.temperament,
-      },
-      {
-        label: 'Weight',
-        value: `imperial: ${getCatPostBreed.value.weight.imperial} | metric: ${getCatPostBreed.value.weight.metric}`,
-      },
-      {
-        label: 'Life span',
-        value: getCatPostBreed.value.life_span,
-      },
-      {
-        label: 'Adaptability',
-        value: getCatPostBreed.value.adaptability,
-      },
-      {
-        label: 'Affection level',
-        value: getCatPostBreed.value.affection_level,
-      },
-      {
-        label: 'Child friendly',
-        value: getCatPostBreed.value.child_friendly,
-      },
-      {
-        label: 'Dog friendly',
-        value: getCatPostBreed.value.dog_friendly,
-      },
-      {
-        label: 'Stranger friendly',
-        value: getCatPostBreed.value.stranger_friendly,
-      },
-      {
-        label: 'Energy level',
-        value: getCatPostBreed.value.energy_level,
-      },
-      {
-        label: 'Experimental',
-        value: getCatPostBreed.value.experimental,
-      },
-      {
-        label: 'Grooming',
-        value: getCatPostBreed.value.grooming,
-      },
-      {
-        label: 'Hairless',
-        value: getCatPostBreed.value.hairless,
-      },
-      {
-        label: 'Health issues',
-        value: getCatPostBreed.value.health_issues,
-      },
-      {
-        label: 'Hypoallergenic',
-        value: getCatPostBreed.value.hypoallergenic,
-      },
+    const breed = getCatPostBreed.value;
+    if (!breed) return [];
 
-      {
-        label: 'Indoor',
-        value: getCatPostBreed.value.indoor,
-      },
-      {
-        label: 'Intelligence',
-        value: getCatPostBreed.value.intelligence,
-      },
-
-      {
-        label: 'Natural',
-        value: getCatPostBreed.value.natural,
-      },
-
-      {
-        label: 'Rare',
-        value: getCatPostBreed.value.rare,
-      },
-      {
-        label: 'Rex',
-        value: getCatPostBreed.value.rex,
-      },
-      {
-        label: 'Shedding level',
-        value: getCatPostBreed.value.shedding_level,
-      },
-      {
-        label: 'Short legs',
-        value: getCatPostBreed.value.short_legs,
-      },
-      {
-        label: 'Social needs',
-        value: getCatPostBreed.value.social_needs,
-      },
-      {
-        label: 'Suppressed tail',
-        value: getCatPostBreed.value.suppressed_tail,
-      },
-
-      {
-        label: 'Vocalisation',
-        value: getCatPostBreed.value.vocalisation,
-      },
-    ];
+    return BREED_OPTION_FIELDS.flatMap(({ key, label, format }) => {
+      const raw = breed[key];
+      if (raw === null || raw === undefined) return [];
+      return [{ label, value: format ? format(raw) : raw }];
+    });
   });
 
   const catBreeds = ref({ data: null, isFetching: true, error: null });
 
-  async function fetchCatBreedsAction() {
-    const { data, isFetching, error } = await fetchCatBreeds();
+  function fetchCatBreedsAction() {
+    const { data, isFetching, error } = fetchCatBreeds();
     catBreeds.value = { data, isFetching, error };
   }
 
