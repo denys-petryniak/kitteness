@@ -11,7 +11,7 @@
         class="mt-[-12px] inline-block w-14"
       />
     </h1>
-    <BaseButton right text="Catify Again" @click="emit('reloadCatPictures')" />
+    <BaseButton right text="Catify 🐈" @click="emit('reloadCatPictures')" />
   </div>
 </template>
 

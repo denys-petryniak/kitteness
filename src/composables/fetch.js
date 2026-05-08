@@ -5,8 +5,13 @@ export function useFetch(url, options = {}) {
   const isFetching = ref(true);
   const error = ref(null);
 
+  // Tracks the most recent invocation so a slow/stale fetch can't overwrite
+  // the result of a newer one when the URL changes rapidly.
+  let latestFetchId = 0;
+
   async function doFetch() {
-    // reset state before fetching..
+    const fetchId = ++latestFetchId;
+
     data.value = null;
     error.value = null;
 
@@ -15,15 +20,16 @@ export function useFetch(url, options = {}) {
     const urlValue = unref(url);
 
     try {
-      // unref() will return the ref value if it's a ref
-      // otherwise the value will be returned as-is
       isFetching.value = true;
       const res = await fetch(urlValue, options);
-      data.value = await res.json();
+      const json = await res.json();
+      if (fetchId !== latestFetchId) return;
+      data.value = json;
     } catch (e) {
+      if (fetchId !== latestFetchId) return;
       error.value = e;
     } finally {
-      isFetching.value = false;
+      if (fetchId === latestFetchId) isFetching.value = false;
     }
   }
 

@@ -81,10 +81,8 @@ export const useCatStore = defineStore('catStore', () => {
   }
 
   const getCatPostBreed = computed(() => {
-    const { breeds } = catPost.value.data?.[0] || {};
-    const [body] = breeds || {};
-
-    return body;
+    const [breed] = catPost.value.data?.[0]?.breeds ?? [];
+    return breed;
   });
 
   const getCatPostBreedOptions = computed(() => {

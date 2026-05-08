@@ -1,6 +1,6 @@
 <template>
   <ErrorMessage v-if="catPost.error" :message="catPost.error.message" />
-  <template v-else-if="catPost.data?.length">
+  <template v-else-if="catPost.data?.length && getCatPostBreed">
     <BreedMain
       :img-url="catPost.data[0].url"
       :img-width="catPost.data[0].width"

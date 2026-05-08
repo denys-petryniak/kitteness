@@ -1,9 +1,14 @@
 <template>
   <div class="gallery md:grid md:auto-rows-auto md:grid-cols-4 md:gap-2">
-    <router-link
+    <component
+      :is="image.breeds?.[0]?.id ? 'router-link' : 'div'"
       v-for="(image, index) in images"
       :key="image.id"
-      :to="{ name: 'breed', params: { id: image.breeds[0].id } }"
+      :to="
+        image.breeds?.[0]?.id
+          ? { name: 'breed', params: { id: image.breeds[0].id } }
+          : null
+      "
       :class="
         isEveryThirdElement(index)
           ? ['col-span-2 row-span-2 w-full']
@@ -17,7 +22,7 @@
         alt="Cat"
         class="mb-2 h-full w-full rounded-xl border-2 border-gray-200 object-cover md:mb-0"
       />
-    </router-link>
+    </component>
   </div>
 </template>
 
