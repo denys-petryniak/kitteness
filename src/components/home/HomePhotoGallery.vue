@@ -11,8 +11,8 @@
       "
       :class="
         isEveryThirdElement(index)
-          ? ['col-span-2 row-span-2 w-full']
-          : ['w-full']
+          ? ['col-span-2 row-span-2 w-full md:aspect-square']
+          : ['w-full md:aspect-square']
       "
     >
       <img
@@ -20,7 +20,7 @@
         :width="image.width"
         :height="image.height"
         alt="Cat"
-        class="mb-2 h-full w-full rounded-xl border-2 border-stone-200 object-cover dark:border-stone-700 md:mb-0"
+        class="mb-2 h-full w-full rounded-xl border-2 border-stone-200 object-cover object-center dark:border-stone-700 md:mb-0"
       />
     </component>
   </div>
