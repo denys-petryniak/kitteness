@@ -24,7 +24,7 @@ export default {
 <script setup>
 import 'vue3-carousel/dist/carousel.css';
 
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { nextTick, onActivated, onBeforeUnmount, onMounted, ref } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 
 defineProps({
@@ -41,6 +41,13 @@ onMounted(() => {
   updateTimeoutId = setTimeout(() => {
     carousel.value?.updateSlideWidth();
   }, 500);
+});
+
+// KeepAlive re-entry: the carousel was unmounted from the DOM while cached,
+// so its internal slide-width is stale and prev/next clicks misbehave.
+onActivated(async () => {
+  await nextTick();
+  carousel.value?.updateSlideWidth();
 });
 
 onBeforeUnmount(() => {
