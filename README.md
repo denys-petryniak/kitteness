@@ -2,10 +2,10 @@
 
 A Vue 3 cat gallery powered by [TheCatAPI](https://thecatapi.com/) — browse random cat photos, explore breeds, and dive into each one's traits.
 
-<img width="1080" height="751" alt="image" src="https://github.com/user-attachments/assets/bffe8189-2847-475b-bf0b-9a57d208a801" />
-<img width="1078" height="747" alt="image" src="https://github.com/user-attachments/assets/e6e7e904-a262-4cf4-9f28-9c815626caed" />
-
-
+<p align="center">
+  <img width="420" alt="Dark mode" src="https://github.com/user-attachments/assets/bffe8189-2847-475b-bf0b-9a57d208a801" />
+  <img width="420" alt="Light mode" src="https://github.com/user-attachments/assets/e6e7e904-a262-4cf4-9f28-9c815626caed" />
+</p>
 
 ## Features
 
