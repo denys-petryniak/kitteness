@@ -14,7 +14,7 @@
         :class="
           isFallingActive
             ? 'pointer-events-none cursor-default'
-            : 'pointer-events-auto cursor-pointer'
+            : 'cursor-paw pointer-events-auto'
         "
         title="Click me, don't be shy 😘"
         @click="initFallingObjects"
@@ -35,8 +35,8 @@
       />
     </div>
     <BaseButton
-      class="absolute bottom-0 left-0 opacity-0 hover:opacity-100"
-      :text="isShowHeart ? 'Pause Magic 😁' : '🩷 Magic Button 💚'"
+      class="magic-button fixed bottom-4 left-4"
+      :text="isShowHeart ? '💤 Hush the Magic 🌙' : '✨ Sprinkle Cat Magic 🪄'"
       @click="toggleHeartVisibility"
     />
     <div
@@ -142,6 +142,49 @@ function toggleHeartVisibility() {
 </script>
 
 <style scoped>
+.cursor-paw {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text x='0' y='26' font-size='26'>🐾</text></svg>")
+      8 24,
+    pointer;
+}
+
+.magic-button {
+  animation: levitate 14s ease-in-out infinite;
+  will-change: transform, opacity;
+  opacity: 0.05;
+}
+
+.magic-button:hover {
+  animation-play-state: paused;
+  opacity: 1 !important;
+  transition: opacity 0.3s ease-out;
+}
+
+@keyframes levitate {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.05;
+  }
+  20% {
+    transform: translate3d(60vw, -25vh, 0);
+    opacity: 0.45;
+  }
+  40% {
+    transform: translate3d(70vw, -65vh, 0);
+    opacity: 0.15;
+  }
+  60% {
+    transform: translate3d(25vw, -80vh, 0);
+    opacity: 0.5;
+  }
+  80% {
+    transform: translate3d(5vw, -40vh, 0);
+    opacity: 0.2;
+  }
+}
+
 .falling-object {
   animation: falling linear forwards;
 }
