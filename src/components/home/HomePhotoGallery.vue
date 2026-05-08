@@ -20,7 +20,7 @@
         :width="image.width"
         :height="image.height"
         alt="Cat"
-        class="mb-2 h-full w-full rounded-xl border-2 border-gray-200 object-cover md:mb-0"
+        class="mb-2 h-full w-full rounded-xl border-2 border-stone-200 object-cover dark:border-stone-700 md:mb-0"
       />
     </component>
   </div>

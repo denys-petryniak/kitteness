@@ -59,17 +59,17 @@ const value = computed({
 
 <style>
 .select {
-  @apply mx-auto mb-6 w-[calc(100%_-_1rem)] max-w-4xl text-lg text-cyan-900 dark:text-slate-100 md:text-xl;
+  @apply mx-auto mb-6 w-[calc(100%_-_1rem)] max-w-4xl text-lg text-rose-900 dark:text-stone-100 md:text-xl;
 }
 
 .select .vs__dropdown-menu,
 .select .vs__dropdown-toggle,
 .select .vs__search::placeholder {
-  @apply border-2 border-gray-200 bg-cyan-100 dark:bg-cyan-800;
+  @apply border-2 border-stone-200 bg-rose-50 dark:border-stone-700 dark:bg-stone-700;
 }
 
 .select .vs__open-indicator {
-  @apply fill-gray-200;
+  @apply fill-stone-400;
 }
 
 .select .vs__selected {
@@ -77,10 +77,10 @@ const value = computed({
 }
 
 .select .vs__dropdown-option {
-  @apply hover:bg-cyan-200 dark:hover:bg-cyan-900;
+  @apply hover:bg-rose-100 dark:hover:bg-stone-800;
 }
 
 .select .vs__dropdown-option--highlight {
-  @apply bg-cyan-200 dark:bg-cyan-900;
+  @apply bg-rose-100 dark:bg-stone-800;
 }
 </style>

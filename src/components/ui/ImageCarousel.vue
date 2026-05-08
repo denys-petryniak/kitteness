@@ -6,7 +6,7 @@
         :width="slide.width"
         :height="slide.height"
         alt="Cat"
-        class="h-full w-full rounded-xl border-2 border-gray-200 bg-cyan-100 object-contain dark:bg-cyan-800"
+        class="h-full w-full rounded-xl border-2 border-stone-200 bg-rose-50 object-contain dark:border-stone-700 dark:bg-stone-700"
       />
     </Slide>
     <template #addons>
@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
 
 .carousel .carousel__prev,
 .carousel .carousel__next {
-  @apply box-content rounded-full border-2 border-solid border-gray-200 bg-cyan-300 dark:bg-cyan-600;
+  @apply box-content rounded-full border-2 border-solid border-stone-200 bg-rose-400 text-white dark:border-stone-700 dark:bg-rose-600;
 }
 
 .carousel .carousel__prev {

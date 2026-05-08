@@ -10,7 +10,7 @@
         width="909"
         height="1101"
         alt="Quokka"
-        class="rounded-xl border-2 border-gray-200 object-cover"
+        class="rounded-xl border-2 border-stone-200 object-cover dark:border-stone-700"
         :class="
           isFallingActive
             ? 'pointer-events-none cursor-default'

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute right-5 top-[50%] translate-y-[-50%] rounded bg-cyan-300 p-1"
+    class="absolute right-5 top-[50%] translate-y-[-50%] rounded bg-rose-300 p-1 dark:bg-stone-700"
     @click="toggleDark()"
   >
     <svg
@@ -21,7 +21,7 @@
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"
       viewBox="0 0 20 20"
-      fill="#155e75"
+      fill="#9f1239"
     >
       <path
         d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"

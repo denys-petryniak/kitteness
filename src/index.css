@@ -20,7 +20,7 @@ body,
 }
 
 body {
-  @apply bg-cyan-50 font-nunito dark:bg-slate-700;
+  @apply bg-stone-50 font-nunito dark:bg-stone-800;
 }
 
 h1,
@@ -29,18 +29,18 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-cyan-600 dark:text-slate-100;
+  @apply text-rose-700 dark:text-stone-100;
 }
 
 p {
-  @apply text-cyan-900 dark:text-slate-100;
+  @apply text-stone-800 dark:text-stone-100;
 }
 
 a {
-  @apply text-cyan-700 hover:text-cyan-800 dark:text-slate-100 dark:hover:text-slate-200;
+  @apply text-rose-600 hover:text-rose-700 dark:text-stone-100 dark:hover:text-stone-200;
 }
 
 .router-link-active,
 .router-link-exact-active {
-  @apply text-indigo-700 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-300;
+  @apply text-amber-600 hover:text-amber-600 dark:text-amber-300 dark:hover:text-amber-300;
 }
