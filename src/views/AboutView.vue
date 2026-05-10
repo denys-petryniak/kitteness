@@ -2,8 +2,7 @@
   <div class="relative">
     <div class="m-auto max-w-2xl">
       <h1 class="mb-8 text-center text-2xl font-bold md:text-3xl">
-        This enchanting feline realm is ruled by the most adorable quokka in the
-        galaxy :)
+        The galaxy's cutest quokka rules this kitty realm 👑
       </h1>
       <img
         src="@/assets/images/quoka.jpeg"
@@ -24,21 +23,14 @@
       v-for="object in fallingObjects"
       :key="object.id"
       :style="object.style"
-      :class="{ 'falling-object': isFallingActive }"
+      :class="[
+        'select-none leading-none',
+        { 'falling-object': isFallingActive },
+      ]"
+      aria-hidden="true"
     >
-      <img
-        :src="object.image.src"
-        :width="object.image.width"
-        :height="object.image.height"
-        :alt="object.image.alt"
-        class="rounded-2xl"
-      />
+      {{ object.emoji }}
     </div>
-    <BaseButton
-      class="magic-button fixed bottom-4 left-4"
-      :text="isShowHeart ? '💤 Hush the Magic 🌙' : '✨ Sprinkle Cat Magic 🪄'"
-      @click="toggleHeartVisibility"
-    />
     <div
       class="pointer-events-none absolute inset-0 flex h-full w-full items-center justify-center"
     >
@@ -76,41 +68,54 @@ export default {
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-import BaseButton from '@/components/ui/BaseButton';
-
 const FALLING_OBJECTS_COUNT = 10;
-const OBJECT_SIZE = 120;
+const OBJECT_SIZE_MOBILE = 64;
+const OBJECT_SIZE_DESKTOP = 120;
+const MOBILE_BREAKPOINT = 640;
 const ANIMATION_MIN_DURATION = 2;
 const ANIMATION_MAX_DURATION = 6;
+const CAT_EMOJIS = [
+  '🐱',
+  '🐈',
+  '🐈‍⬛',
+  '😸',
+  '😺',
+  '😻',
+  '😼',
+  '😽',
+  '🙀',
+  '😿',
+  '😾',
+  '🐾',
+];
 
 const isFallingActive = ref(false);
 const fallingObjects = ref([]);
+const isShowHeart = ref(false);
 
-function getRandomLeftObjectGap() {
-  return `calc(${Math.random() * 100}% - ${OBJECT_SIZE / 3}px)`;
+function getRandomLeftObjectGap(size) {
+  return `calc(${Math.random() * 100}% - ${size / 3}px)`;
 }
 
 function initFallingObjects() {
   isFallingActive.value = true;
+  isShowHeart.value = true;
+
+  const objectSize =
+    window.innerWidth < MOBILE_BREAKPOINT
+      ? OBJECT_SIZE_MOBILE
+      : OBJECT_SIZE_DESKTOP;
 
   fallingObjects.value = Array.from(
     { length: FALLING_OBJECTS_COUNT },
     (_, index) => ({
       id: index,
-      image: {
-        src: `https://loremflickr.com/${OBJECT_SIZE}/${OBJECT_SIZE}?random=${
-          index + 1
-        }`,
-        width: OBJECT_SIZE,
-        height: OBJECT_SIZE,
-        alt: 'Kitten',
-      },
+      emoji: CAT_EMOJIS[Math.floor(Math.random() * CAT_EMOJIS.length)],
       style: {
         position: 'absolute',
         top: 0,
-        left: getRandomLeftObjectGap(),
-        width: `${OBJECT_SIZE}px`,
-        height: `${OBJECT_SIZE}px`,
+        left: getRandomLeftObjectGap(objectSize),
+        fontSize: `${objectSize}px`,
         animationDuration: `${
           ANIMATION_MIN_DURATION + Math.random() * ANIMATION_MAX_DURATION
         }s`,
@@ -133,12 +138,6 @@ watch(
     resetAnimations();
   },
 );
-
-const isShowHeart = ref(false);
-
-function toggleHeartVisibility() {
-  isShowHeart.value = !isShowHeart.value;
-}
 </script>
 
 <style scoped>
@@ -147,42 +146,6 @@ function toggleHeartVisibility() {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text x='0' y='26' font-size='26'>🐾</text></svg>")
       8 24,
     pointer;
-}
-
-.magic-button {
-  animation: levitate 14s ease-in-out infinite;
-  will-change: transform, opacity;
-  opacity: 0.05;
-}
-
-.magic-button:hover {
-  animation-play-state: paused;
-  opacity: 1 !important;
-  transition: opacity 0.3s ease-out;
-}
-
-@keyframes levitate {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0.05;
-  }
-  20% {
-    transform: translate3d(60vw, -25vh, 0);
-    opacity: 0.45;
-  }
-  40% {
-    transform: translate3d(70vw, -65vh, 0);
-    opacity: 0.15;
-  }
-  60% {
-    transform: translate3d(25vw, -80vh, 0);
-    opacity: 0.5;
-  }
-  80% {
-    transform: translate3d(5vw, -40vh, 0);
-    opacity: 0.2;
-  }
 }
 
 .falling-object {
